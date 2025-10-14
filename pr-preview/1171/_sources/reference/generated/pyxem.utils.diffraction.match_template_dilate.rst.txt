@@ -1,9 +1,0 @@
-match\_template\_dilate
-=======================
-
-.. currentmodule:: pyxem.utils.diffraction
-
-.. autofunction:: match_template_dilate
-
-.. minigallery:: pyxem.utils.diffraction.match_template_dilate
-    :add-heading: Examples using ``match_template_dilate``

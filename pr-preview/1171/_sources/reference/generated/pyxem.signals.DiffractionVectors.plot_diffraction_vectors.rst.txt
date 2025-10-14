@@ -1,6 +1,0 @@
-plot\_diffraction\_vectors
-==========================
-
-.. currentmodule:: pyxem.signals
-
-.. automethod:: DiffractionVectors.plot_diffraction_vectors

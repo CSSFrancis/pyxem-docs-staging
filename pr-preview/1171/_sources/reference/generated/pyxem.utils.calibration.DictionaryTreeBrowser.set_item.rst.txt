@@ -1,6 +1,0 @@
-set\_item
-=========
-
-.. currentmodule:: pyxem.utils.calibration
-
-.. automethod:: DictionaryTreeBrowser.set_item

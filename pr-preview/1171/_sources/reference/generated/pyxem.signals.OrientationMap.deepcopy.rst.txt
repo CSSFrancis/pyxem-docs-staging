@@ -1,6 +1,0 @@
-deepcopy
-========
-
-.. currentmodule:: pyxem.signals
-
-.. automethod:: OrientationMap.deepcopy

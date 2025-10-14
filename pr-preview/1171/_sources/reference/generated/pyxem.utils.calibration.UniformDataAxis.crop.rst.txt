@@ -1,6 +1,0 @@
-crop
-====
-
-.. currentmodule:: pyxem.utils.calibration
-
-.. automethod:: UniformDataAxis.crop

@@ -1,6 +1,0 @@
-export
-======
-
-.. currentmodule:: pyxem.utils.calibration
-
-.. automethod:: DictionaryTreeBrowser.export

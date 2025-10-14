@@ -1,9 +1,0 @@
-scales
-======
-
-.. currentmodule:: pyxem.signals
-
-.. autoproperty:: DiffractionVectors.scales
-
-.. minigallery:: pyxem.signals.DiffractionVectors.scales
-    :add-heading: Examples using ``DiffractionVectors.scales``

@@ -1,6 +1,0 @@
-get\_concentric\_virtual\_images
-================================
-
-.. currentmodule:: pyxem.generators
-
-.. automethod:: VirtualImageGenerator.get_concentric_virtual_images

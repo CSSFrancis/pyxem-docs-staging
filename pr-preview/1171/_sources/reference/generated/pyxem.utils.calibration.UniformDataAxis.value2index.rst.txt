@@ -1,6 +1,0 @@
-value2index
-===========
-
-.. currentmodule:: pyxem.utils.calibration
-
-.. automethod:: UniformDataAxis.value2index
