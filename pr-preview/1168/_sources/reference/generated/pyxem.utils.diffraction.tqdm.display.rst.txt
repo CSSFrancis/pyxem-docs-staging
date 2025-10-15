@@ -1,6 +1,0 @@
-display
-=======
-
-.. currentmodule:: pyxem.utils.diffraction
-
-.. automethod:: tqdm.display

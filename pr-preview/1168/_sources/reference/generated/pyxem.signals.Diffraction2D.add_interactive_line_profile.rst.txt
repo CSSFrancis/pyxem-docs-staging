@@ -1,6 +1,0 @@
-add\_interactive\_line\_profile
-===============================
-
-.. currentmodule:: pyxem.signals
-
-.. automethod:: Diffraction2D.add_interactive_line_profile

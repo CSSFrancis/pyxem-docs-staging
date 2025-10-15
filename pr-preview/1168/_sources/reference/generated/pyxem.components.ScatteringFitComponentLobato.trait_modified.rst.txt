@@ -1,9 +1,0 @@
-trait\_modified
-===============
-
-.. currentmodule:: pyxem.components
-
-.. autoproperty:: ScatteringFitComponentLobato.trait_modified
-
-.. minigallery:: pyxem.components.ScatteringFitComponentLobato.trait_modified
-    :add-heading: Examples using ``ScatteringFitComponentLobato.trait_modified``

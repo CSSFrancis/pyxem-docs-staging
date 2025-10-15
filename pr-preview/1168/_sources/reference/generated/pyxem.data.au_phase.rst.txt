@@ -1,9 +1,0 @@
-au\_phase
-=========
-
-.. currentmodule:: pyxem.data
-
-.. autofunction:: au_phase
-
-.. minigallery:: pyxem.data.au_phase
-    :add-heading: Examples using ``au_phase``

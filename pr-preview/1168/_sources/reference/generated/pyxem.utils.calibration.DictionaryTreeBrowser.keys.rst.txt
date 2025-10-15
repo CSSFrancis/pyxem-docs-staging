@@ -1,6 +1,0 @@
-keys
-====
-
-.. currentmodule:: pyxem.utils.calibration
-
-.. automethod:: DictionaryTreeBrowser.keys

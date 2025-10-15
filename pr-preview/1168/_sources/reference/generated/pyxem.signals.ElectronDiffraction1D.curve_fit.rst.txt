@@ -1,6 +1,0 @@
-curve\_fit
-==========
-
-.. currentmodule:: pyxem.signals
-
-.. automethod:: ElectronDiffraction1D.curve_fit

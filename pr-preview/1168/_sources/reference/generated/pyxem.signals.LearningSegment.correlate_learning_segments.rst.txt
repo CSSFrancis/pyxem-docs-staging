@@ -1,6 +1,0 @@
-correlate\_learning\_segments
-=============================
-
-.. currentmodule:: pyxem.signals
-
-.. automethod:: LearningSegment.correlate_learning_segments

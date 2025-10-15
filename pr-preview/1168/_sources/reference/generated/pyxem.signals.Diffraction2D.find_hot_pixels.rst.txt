@@ -1,6 +1,0 @@
-find\_hot\_pixels
-=================
-
-.. currentmodule:: pyxem.signals
-
-.. automethod:: Diffraction2D.find_hot_pixels

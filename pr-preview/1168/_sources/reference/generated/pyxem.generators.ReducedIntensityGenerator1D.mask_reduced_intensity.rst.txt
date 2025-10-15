@@ -1,6 +1,0 @@
-mask\_reduced\_intensity
-========================
-
-.. currentmodule:: pyxem.generators
-
-.. automethod:: ReducedIntensityGenerator1D.mask_reduced_intensity

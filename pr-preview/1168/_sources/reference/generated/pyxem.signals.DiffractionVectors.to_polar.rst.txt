@@ -1,6 +1,0 @@
-to\_polar
-=========
-
-.. currentmodule:: pyxem.signals
-
-.. automethod:: DiffractionVectors.to_polar

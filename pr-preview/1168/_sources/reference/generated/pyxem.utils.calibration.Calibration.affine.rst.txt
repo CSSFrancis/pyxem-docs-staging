@@ -1,9 +1,0 @@
-affine
-======
-
-.. currentmodule:: pyxem.utils.calibration
-
-.. autoproperty:: Calibration.affine
-
-.. minigallery:: pyxem.utils.calibration.Calibration.affine
-    :add-heading: Examples using ``Calibration.affine``

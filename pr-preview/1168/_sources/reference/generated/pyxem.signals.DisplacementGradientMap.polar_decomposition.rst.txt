@@ -1,6 +1,0 @@
-polar\_decomposition
-====================
-
-.. currentmodule:: pyxem.signals
-
-.. automethod:: DisplacementGradientMap.polar_decomposition

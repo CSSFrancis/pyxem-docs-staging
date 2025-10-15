@@ -1,6 +1,0 @@
-get\_symmetry\_coefficient
-==========================
-
-.. currentmodule:: pyxem.signals
-
-.. automethod:: Correlation1D.get_symmetry_coefficient

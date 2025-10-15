@@ -1,9 +1,0 @@
-monitor
-=======
-
-.. currentmodule:: pyxem.utils.diffraction
-
-.. autoproperty:: tqdm.monitor
-
-.. minigallery:: pyxem.utils.diffraction.tqdm.monitor
-    :add-heading: Examples using ``tqdm.monitor``

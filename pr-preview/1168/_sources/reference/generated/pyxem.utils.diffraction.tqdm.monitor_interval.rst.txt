@@ -1,9 +1,0 @@
-monitor\_interval
-=================
-
-.. currentmodule:: pyxem.utils.diffraction
-
-.. autoproperty:: tqdm.monitor_interval
-
-.. minigallery:: pyxem.utils.diffraction.tqdm.monitor_interval
-    :add-heading: Examples using ``tqdm.monitor_interval``

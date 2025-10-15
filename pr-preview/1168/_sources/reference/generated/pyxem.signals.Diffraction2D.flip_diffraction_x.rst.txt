@@ -1,6 +1,0 @@
-flip\_diffraction\_x
-====================
-
-.. currentmodule:: pyxem.signals
-
-.. automethod:: Diffraction2D.flip_diffraction_x

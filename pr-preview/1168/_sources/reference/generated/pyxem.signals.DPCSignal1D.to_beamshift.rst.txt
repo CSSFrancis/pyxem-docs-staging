@@ -1,6 +1,0 @@
-to\_beamshift
-=============
-
-.. currentmodule:: pyxem.signals
-
-.. automethod:: DPCSignal1D.to_beamshift

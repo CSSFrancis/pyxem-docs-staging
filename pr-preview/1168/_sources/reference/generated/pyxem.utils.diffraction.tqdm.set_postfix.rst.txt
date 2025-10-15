@@ -1,6 +1,0 @@
-set\_postfix
-============
-
-.. currentmodule:: pyxem.utils.diffraction
-
-.. automethod:: tqdm.set_postfix

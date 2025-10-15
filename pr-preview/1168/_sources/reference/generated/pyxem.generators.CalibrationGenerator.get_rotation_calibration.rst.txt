@@ -1,6 +1,0 @@
-get\_rotation\_calibration
-==========================
-
-.. currentmodule:: pyxem.generators
-
-.. automethod:: CalibrationGenerator.get_rotation_calibration

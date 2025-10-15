@@ -1,6 +1,0 @@
-set\_scan\_calibration
-======================
-
-.. currentmodule:: pyxem.signals
-
-.. automethod:: ElectronDiffraction2D.set_scan_calibration
