@@ -1,0 +1,52 @@
+﻿generators
+==========
+
+.. automodule:: pyxem.generators
+
+    
+    
+    
+
+    
+    
+    .. rubric:: Functions
+
+    .. autosummary::
+        :toctree:
+        :template: custom-function-template.rst
+        
+        get_DisplacementGradientMap
+        get_single_DisplacementGradientTensor
+    
+    
+
+    
+    
+    .. rubric:: Classes
+
+    .. autosummary::
+        :toctree:
+        :template: custom-class-template.rst
+        
+        AcceleratedIndexationGenerator
+        CalibrationGenerator
+        IndexationGenerator
+        IntegrationGenerator
+        PDFGenerator1D
+        ProfileIndexationGenerator
+        ReducedIntensityGenerator1D
+        SubpixelrefinementGenerator
+        TemplateIndexationGenerator
+        VarianceGenerator
+        VectorIndexationGenerator
+        VirtualDarkFieldGenerator
+        VirtualImageGenerator
+    
+    
+
+    
+    
+    
+
+
+

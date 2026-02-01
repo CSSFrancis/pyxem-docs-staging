@@ -1,0 +1,78 @@
+﻿signals
+=======
+
+.. automodule:: pyxem.signals
+
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+    .. rubric:: Classes
+
+    .. autosummary::
+        :toctree:
+        :template: custom-class-template.rst
+        
+        BeamShift
+        CommonDiffraction
+        Correlation1D
+        Correlation2D
+        DPCSignal1D
+        DPCSignal2D
+        Diffraction1D
+        Diffraction2D
+        DiffractionVariance1D
+        DiffractionVariance2D
+        DiffractionVectors
+        DiffractionVectors1D
+        DiffractionVectors2D
+        DisplacementGradientMap
+        ElectronDiffraction1D
+        ElectronDiffraction2D
+        ImageVariance
+        InSituDiffraction2D
+        LabeledDiffractionVectors2D
+        LazyBeamShift
+        LazyCorrelation1D
+        LazyCorrelation2D
+        LazyDPCSignal1D
+        LazyDPCSignal2D
+        LazyDiffraction1D
+        LazyDiffraction2D
+        LazyDiffractionVectors
+        LazyDiffractionVectors2D
+        LazyDisplacementGradientMap
+        LazyElectronDiffraction1D
+        LazyElectronDiffraction2D
+        LazyInSituDiffraction2D
+        LazyOrientationMap
+        LazyPolarDiffraction2D
+        LazyPolarVectors
+        LazyPower2D
+        LazyVirtualDarkFieldImage
+        LearningSegment
+        OrientationMap
+        PairDistributionFunction1D
+        PolarDiffraction2D
+        PolarVectors
+        Power2D
+        ReducedIntensity1D
+        StrainMap
+        VDFSegment
+        VectorMatchingResults
+        VirtualDarkFieldImage
+    
+    
+
+    
+    
+    
+
+
+

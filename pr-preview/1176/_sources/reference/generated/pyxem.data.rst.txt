@@ -1,0 +1,61 @@
+﻿data
+====
+
+.. automodule:: pyxem.data
+
+    
+    
+    
+
+    
+    
+    .. rubric:: Functions
+
+    .. autosummary::
+        :toctree:
+        :template: custom-function-template.rst
+        
+        au_grating
+        au_grating_20cm
+        au_phase
+        cuag_orientations
+        fe_bcc_phase
+        fe_fcc_phase
+        fe_multi_phase_grains
+        feal_stripes
+        mgo_nanocrystals
+        organic_semiconductor
+        pdcusi_insitu
+        pdnip_glass
+        sample_with_g
+        si_grains
+        si_grains_simple
+        si_phase
+        si_rotations_line
+        si_tilt
+        simulated_constant_shift_magnitude
+        simulated_overlap
+        simulated_pn_junction
+        simulated_strain
+        simulated_stripes
+        small_ptychography
+        sped_ag
+        tilt_boundary_data
+        twinned_nanowire
+        zrcual_1
+        zrcual_2
+        zrcual_3
+        zrnb_precipitate
+    
+    
+
+    
+    
+    
+
+    
+    
+    
+
+
+

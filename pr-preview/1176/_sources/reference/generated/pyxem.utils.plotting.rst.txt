@@ -1,0 +1,33 @@
+plotting
+========
+
+.. automodule:: pyxem.utils.plotting
+
+    
+    
+    
+
+    
+    
+    .. rubric:: Functions
+
+    .. autosummary::
+        :toctree:
+        :template: custom-function-template.rst
+        
+        make_color_wheel_marker
+        plot_beam_shift_color
+        plot_template_over_pattern
+    
+    
+
+    
+    
+    
+
+    
+    
+    
+
+
+

@@ -1,0 +1,33 @@
+﻿utils
+=====
+
+.. automodule:: pyxem.utils
+
+    
+    
+    
+
+    
+    
+    .. rubric:: Functions
+
+    .. autosummary::
+        :toctree:
+        :template: custom-function-template.rst
+        
+        determine_ellipse
+        find_diffraction_calibration
+        plot_template_over_pattern
+    
+    
+
+    
+    
+    
+
+    
+    
+    
+
+
+

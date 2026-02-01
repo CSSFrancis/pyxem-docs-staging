@@ -1,0 +1,9 @@
+plot\_beam\_shift\_color
+========================
+
+.. currentmodule:: pyxem.utils.plotting
+
+.. autofunction:: plot_beam_shift_color
+
+.. minigallery:: pyxem.utils.plotting.plot_beam_shift_color
+    :add-heading: Examples using ``plot_beam_shift_color``

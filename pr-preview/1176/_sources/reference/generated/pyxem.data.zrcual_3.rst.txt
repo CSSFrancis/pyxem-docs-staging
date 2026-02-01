@@ -1,0 +1,9 @@
+zrcual\_3
+=========
+
+.. currentmodule:: pyxem.data
+
+.. autofunction:: zrcual_3
+
+.. minigallery:: pyxem.data.zrcual_3
+    :add-heading: Examples using ``zrcual_3``

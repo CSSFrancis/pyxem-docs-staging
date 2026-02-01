@@ -1,0 +1,9 @@
+make\_color\_wheel\_marker
+==========================
+
+.. currentmodule:: pyxem.utils.plotting
+
+.. autofunction:: make_color_wheel_marker
+
+.. minigallery:: pyxem.utils.plotting.make_color_wheel_marker
+    :add-heading: Examples using ``make_color_wheel_marker``
