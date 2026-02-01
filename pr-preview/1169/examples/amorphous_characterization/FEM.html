@@ -37,14 +37,14 @@
 <link as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" rel="preload"/>
 <link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" rel="preload"/>
 <script src="../../_static/documentation_options.js?v=88e4c0c0"></script>
-<script src="../../_static/doctools.js?v=9bcbadda"></script>
-<script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+<script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
 <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
 <script src="../../_static/copybutton.js?v=f281be69"></script>
 <script src="../../_static/design-tabs.js?v=f930bc37"></script>
 <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
 <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-<script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 <script>DOCUMENTATION_OPTIONS.pagename = 'examples/amorphous_characterization/FEM';</script>
 <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
@@ -828,24 +828,101 @@ Daulton, et al. Ultramicroscopy 110, 1279–1289 (2010), DOI: 10.1016/j.ultramic
 <li><img alt="pos1-1 Navigator" class="sphx-glr-multi-img" src="../../_images/sphx_glr_FEM_001.png" srcset="../../_images/sphx_glr_FEM_001.png"/></li>
 <li><img alt="pos1-1 Signal" class="sphx-glr-multi-img" src="../../_images/sphx_glr_FEM_002.png" srcset="../../_images/sphx_glr_FEM_002.png"/></li>
 </ul>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Downloading file 'pos1-1.zspy' from 'https://zenodo.org/records/15490547/files/pos1-1.zspy' to '/home/runner/.cache/pyxem/0.21.0'.
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/hyperspy/misc/utils.py:72: VisibleDeprecationWarning: `_get_block_pattern` has moved to `hyperspy.misc.dask_utils`. It is for internal use only and may be removed in the future.
+  warnings.warn(
+Downloading file 'pos1-1.zspy' from 'https://zenodo.org/records/15490547/files/pos1-1.zspy' to '/home/runner/.cache/pyxem/0.21.0'.
 
   0%|                                              | 0.00/18.3M [00:00&lt;?, ?B/s]
-  0%|                                     | 5.12k/18.3M [00:00&lt;08:09, 37.3kB/s]
-  0%|                                      | 39.9k/18.3M [00:00&lt;01:57, 155kB/s]
-  1%|▏                                     | 93.2k/18.3M [00:00&lt;01:13, 246kB/s]
-  1%|▍                                      | 209k/18.3M [00:00&lt;00:39, 453kB/s]
-  2%|▊                                      | 406k/18.3M [00:00&lt;00:23, 759kB/s]
-  5%|█▋                                    | 830k/18.3M [00:00&lt;00:11, 1.46MB/s]
-  9%|███▎                                 | 1.61M/18.3M [00:01&lt;00:06, 2.67MB/s]
- 18%|██████▌                              | 3.23M/18.3M [00:01&lt;00:02, 5.22MB/s]
- 35%|█████████████                        | 6.42M/18.3M [00:01&lt;00:01, 10.2MB/s]
- 49%|██████████████████▏                  | 8.97M/18.3M [00:01&lt;00:00, 12.1MB/s]
- 65%|████████████████████████             | 11.9M/18.3M [00:01&lt;00:00, 14.2MB/s]
- 83%|██████████████████████████████▋      | 15.1M/18.3M [00:01&lt;00:00, 16.4MB/s]
- 99%|████████████████████████████████████▋| 18.1M/18.3M [00:01&lt;00:00, 17.3MB/s]
+  0%|                                     | 14.3k/18.3M [00:00&lt;03:58, 76.4kB/s]
+  0%|                                     | 37.9k/18.3M [00:00&lt;03:17, 92.3kB/s]
+  1%|▏                                      | 109k/18.3M [00:00&lt;01:20, 224kB/s]
+  1%|▌                                      | 246k/18.3M [00:00&lt;00:40, 442kB/s]
+  3%|█                                      | 524k/18.3M [00:00&lt;00:20, 857kB/s]
+  6%|██▏                                  | 1.06M/18.3M [00:01&lt;00:10, 1.64MB/s]
+ 12%|████▍                                | 2.16M/18.3M [00:01&lt;00:05, 3.22MB/s]
+ 20%|███████▍                             | 3.69M/18.3M [00:01&lt;00:02, 5.78MB/s]
+ 24%|████████▉                            | 4.39M/18.3M [00:01&lt;00:04, 3.19MB/s]
+ 27%|█████████▉                           | 4.91M/18.3M [00:02&lt;00:05, 2.50MB/s]
+ 29%|██████████▊                          | 5.32M/18.3M [00:02&lt;00:06, 1.93MB/s]
+ 31%|███████████▍                         | 5.64M/18.3M [00:02&lt;00:07, 1.72MB/s]
+ 32%|███████████▉                         | 5.89M/18.3M [00:03&lt;00:07, 1.62MB/s]
+ 33%|████████████▎                        | 6.11M/18.3M [00:03&lt;00:07, 1.63MB/s]
+ 35%|████████████▊                        | 6.31M/18.3M [00:03&lt;00:07, 1.61MB/s]
+ 36%|█████████████▏                       | 6.49M/18.3M [00:03&lt;00:07, 1.64MB/s]
+ 37%|█████████████▌                       | 6.68M/18.3M [00:03&lt;00:07, 1.55MB/s]
+ 37%|█████████████▊                       | 6.84M/18.3M [00:03&lt;00:08, 1.41MB/s]
+ 38%|██████████████▏                      | 6.99M/18.3M [00:03&lt;00:08, 1.26MB/s]
+ 39%|██████████████▍                      | 7.13M/18.3M [00:04&lt;00:08, 1.25MB/s]
+ 40%|██████████████▊                      | 7.34M/18.3M [00:04&lt;00:07, 1.45MB/s]
+ 41%|███████████████▎                     | 7.58M/18.3M [00:04&lt;00:06, 1.68MB/s]
+ 43%|███████████████▊                     | 7.79M/18.3M [00:04&lt;00:05, 1.77MB/s]
+ 44%|████████████████▏                    | 7.97M/18.3M [00:04&lt;00:05, 1.72MB/s]
+ 45%|████████████████▌                    | 8.15M/18.3M [00:04&lt;00:06, 1.54MB/s]
+ 46%|████████████████▊                    | 8.32M/18.3M [00:04&lt;00:06, 1.56MB/s]
+ 46%|█████████████████▏                   | 8.48M/18.3M [00:04&lt;00:06, 1.51MB/s]
+ 47%|█████████████████▍                   | 8.64M/18.3M [00:04&lt;00:07, 1.28MB/s]
+ 48%|█████████████████▊                   | 8.77M/18.3M [00:05&lt;00:07, 1.23MB/s]
+ 49%|██████████████████                   | 8.90M/18.3M [00:05&lt;00:07, 1.17MB/s]
+ 50%|██████████████████▎                  | 9.05M/18.3M [00:05&lt;00:07, 1.24MB/s]
+ 51%|██████████████████▊                  | 9.26M/18.3M [00:05&lt;00:06, 1.46MB/s]
+ 52%|███████████████████                  | 9.41M/18.3M [00:05&lt;00:06, 1.33MB/s]
+ 52%|███████████████████▎                 | 9.55M/18.3M [00:05&lt;00:06, 1.29MB/s]
+ 53%|███████████████████▌                 | 9.68M/18.3M [00:05&lt;00:06, 1.29MB/s]
+ 54%|███████████████████▉                 | 9.82M/18.3M [00:05&lt;00:06, 1.28MB/s]
+ 54%|████████████████████▏                | 9.95M/18.3M [00:06&lt;00:06, 1.26MB/s]
+ 55%|████████████████████▍                | 10.1M/18.3M [00:06&lt;00:06, 1.27MB/s]
+ 56%|████████████████████▋                | 10.2M/18.3M [00:06&lt;00:06, 1.28MB/s]
+ 57%|████████████████████▉                | 10.3M/18.3M [00:06&lt;00:06, 1.24MB/s]
+ 57%|█████████████████████▎               | 10.5M/18.3M [00:06&lt;00:05, 1.31MB/s]
+ 58%|█████████████████████▌               | 10.7M/18.3M [00:06&lt;00:05, 1.41MB/s]
+ 59%|█████████████████████▉               | 10.8M/18.3M [00:06&lt;00:05, 1.46MB/s]
+ 60%|██████████████████████▏              | 11.0M/18.3M [00:06&lt;00:05, 1.43MB/s]
+ 61%|██████████████████████▌              | 11.2M/18.3M [00:06&lt;00:04, 1.53MB/s]
+ 62%|██████████████████████▉              | 11.3M/18.3M [00:06&lt;00:04, 1.52MB/s]
+ 63%|███████████████████████▎             | 11.5M/18.3M [00:07&lt;00:04, 1.65MB/s]
+ 64%|███████████████████████▋             | 11.7M/18.3M [00:07&lt;00:03, 1.68MB/s]
+ 65%|████████████████████████             | 11.9M/18.3M [00:07&lt;00:03, 1.65MB/s]
+ 66%|████████████████████████▎            | 12.0M/18.3M [00:07&lt;00:04, 1.55MB/s]
+ 67%|████████████████████████▋            | 12.2M/18.3M [00:07&lt;00:03, 1.56MB/s]
+ 68%|█████████████████████████            | 12.3M/18.3M [00:07&lt;00:03, 1.49MB/s]
+ 68%|█████████████████████████▎           | 12.5M/18.3M [00:07&lt;00:04, 1.40MB/s]
+ 69%|█████████████████████████▌           | 12.6M/18.3M [00:07&lt;00:04, 1.31MB/s]
+ 70%|█████████████████████████▊           | 12.8M/18.3M [00:08&lt;00:04, 1.13MB/s]
+ 71%|██████████████████████████           | 12.9M/18.3M [00:08&lt;00:05, 1.07MB/s]
+ 71%|███████████████████████████           | 13.0M/18.3M [00:08&lt;00:05, 982kB/s]
+ 72%|███████████████████████████▎          | 13.1M/18.3M [00:08&lt;00:05, 936kB/s]
+ 72%|███████████████████████████▍          | 13.2M/18.3M [00:08&lt;00:05, 956kB/s]
+ 73%|███████████████████████████          | 13.4M/18.3M [00:08&lt;00:04, 1.09MB/s]
+ 74%|███████████████████████████▍         | 13.6M/18.3M [00:08&lt;00:03, 1.35MB/s]
+ 75%|███████████████████████████▊         | 13.7M/18.3M [00:08&lt;00:03, 1.34MB/s]
+ 76%|████████████████████████████         | 13.8M/18.3M [00:08&lt;00:03, 1.32MB/s]
+ 77%|████████████████████████████▎        | 14.0M/18.3M [00:09&lt;00:03, 1.33MB/s]
+ 77%|████████████████████████████▌        | 14.1M/18.3M [00:09&lt;00:03, 1.34MB/s]
+ 78%|████████████████████████████▉        | 14.3M/18.3M [00:09&lt;00:02, 1.37MB/s]
+ 79%|█████████████████████████████▎       | 14.4M/18.3M [00:09&lt;00:02, 1.50MB/s]
+ 81%|█████████████████████████████▊       | 14.7M/18.3M [00:09&lt;00:01, 1.78MB/s]
+ 82%|██████████████████████████████▎      | 15.0M/18.3M [00:09&lt;00:01, 1.97MB/s]
+ 83%|██████████████████████████████▋      | 15.2M/18.3M [00:09&lt;00:01, 1.79MB/s]
+ 84%|███████████████████████████████      | 15.4M/18.3M [00:09&lt;00:01, 1.79MB/s]
+ 85%|███████████████████████████████▍     | 15.5M/18.3M [00:09&lt;00:01, 1.79MB/s]
+ 86%|███████████████████████████████▊     | 15.7M/18.3M [00:10&lt;00:01, 1.62MB/s]
+ 87%|████████████████████████████████▏    | 15.9M/18.3M [00:10&lt;00:01, 1.48MB/s]
+ 88%|████████████████████████████████▍    | 16.0M/18.3M [00:10&lt;00:01, 1.48MB/s]
+ 89%|████████████████████████████████▊    | 16.2M/18.3M [00:10&lt;00:01, 1.30MB/s]
+ 89%|█████████████████████████████████    | 16.3M/18.3M [00:10&lt;00:01, 1.25MB/s]
+ 90%|█████████████████████████████████▎   | 16.5M/18.3M [00:10&lt;00:01, 1.27MB/s]
+ 91%|█████████████████████████████████▋   | 16.6M/18.3M [00:10&lt;00:01, 1.31MB/s]
+ 92%|█████████████████████████████████▉   | 16.7M/18.3M [00:10&lt;00:01, 1.19MB/s]
+ 92%|██████████████████████████████████▏  | 16.9M/18.3M [00:11&lt;00:01, 1.17MB/s]
+ 93%|██████████████████████████████████▌  | 17.1M/18.3M [00:11&lt;00:00, 1.35MB/s]
+ 95%|██████████████████████████████████▉  | 17.3M/18.3M [00:11&lt;00:00, 1.55MB/s]
+ 95%|███████████████████████████████████▎ | 17.4M/18.3M [00:11&lt;00:00, 1.57MB/s]
+ 96%|███████████████████████████████████▋ | 17.6M/18.3M [00:11&lt;00:00, 1.54MB/s]
+ 97%|███████████████████████████████████▉ | 17.8M/18.3M [00:11&lt;00:00, 1.54MB/s]
+ 98%|████████████████████████████████████▎| 17.9M/18.3M [00:11&lt;00:00, 1.56MB/s]
+ 99%|████████████████████████████████████▋| 18.1M/18.3M [00:11&lt;00:00, 1.66MB/s]
   0%|                                              | 0.00/18.3M [00:00&lt;?, ?B/s]
-100%|██████████████████████████████████████| 18.3M/18.3M [00:00&lt;00:00, 147GB/s]
+100%|█████████████████████████████████████| 18.3M/18.3M [00:00&lt;00:00, 99.1GB/s]
 </pre></div>
 </div>
 <section id="using-manual-ellipse-determination">
@@ -854,14 +931,14 @@ Daulton, et al. Ultramicroscopy 110, 1279–1289 (2010), DOI: 10.1016/j.ultramic
 can force the ellipse to fit the first ring by masking the zero beam.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><a href="../../reference/generated/pyxem.signals.ElectronDiffraction2D.html#pyxem.signals.ElectronDiffraction2D" title="pyxem.signals.ElectronDiffraction2D" class="sphx-glr-backref-module-pyxem-signals sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">summed</span></a> <span class="o">=</span> <a href="../../reference/generated/pyxem.signals.ElectronDiffraction2D.html#pyxem.signals.ElectronDiffraction2D" title="pyxem.signals.ElectronDiffraction2D" class="sphx-glr-backref-module-pyxem-signals sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">s</span></a><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 
-<a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">center</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">affine</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">params</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pos</span></a> <span class="o">=</span> <a href="../../reference/generated/pyxem.utils.determine_ellipse.html#pyxem.utils.determine_ellipse" title="pyxem.utils.determine_ellipse" class="sphx-glr-backref-module-pyxem-utils sphx-glr-backref-type-py-function"><span class="n">pxm</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">ransac_ellipse_tools</span><span class="o">.</span><span class="n">determine_ellipse</span></a><span class="p">(</span>
+<a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">center</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">affine</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">params</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pos</span></a> <span class="o">=</span> <a href="../../reference/generated/pyxem.utils.determine_ellipse.html#pyxem.utils.determine_ellipse" title="pyxem.utils.determine_ellipse" class="sphx-glr-backref-module-pyxem-utils sphx-glr-backref-type-py-function"><span class="n">pxm</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">ransac_ellipse_tools</span><span class="o">.</span><span class="n">determine_ellipse</span></a><span class="p">(</span>
     <a href="../../reference/generated/pyxem.signals.ElectronDiffraction2D.html#pyxem.signals.ElectronDiffraction2D" title="pyxem.signals.ElectronDiffraction2D" class="sphx-glr-backref-module-pyxem-signals sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">summed</span></a><span class="p">,</span>
     <span class="n">return_params</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">num_points</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
     <span class="n">use_ransac</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span>
 <a href="https://hyperspy.org/hyperspy-doc/current/reference/api.plot/markers.html#hyperspy.api.plot.markers.Ellipses" title="hyperspy.drawing._markers.ellipses.Ellipses" class="sphx-glr-backref-module-hyperspy-drawing-_markers-ellipses sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">el</span></a><span class="p">,</span> <a href="https://hyperspy.org/hyperspy-doc/current/reference/api.plot/markers.html#hyperspy.api.plot.markers.Points" title="hyperspy.drawing._markers.points.Points" class="sphx-glr-backref-module-hyperspy-drawing-_markers-points sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">in_points</span></a> <span class="o">=</span> <a href="../../reference/generated/pyxem.utils.ransac_ellipse_tools.ellipse_to_markers.html#pyxem.utils.ransac_ellipse_tools.ellipse_to_markers" title="pyxem.utils.ransac_ellipse_tools.ellipse_to_markers" class="sphx-glr-backref-module-pyxem-utils-ransac_ellipse_tools sphx-glr-backref-type-py-function"><span class="n">pxm</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">ransac_ellipse_tools</span><span class="o">.</span><span class="n">ellipse_to_markers</span></a><span class="p">(</span>
-    <span class="n">ellipse_array</span><span class="o">=</span><a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">params</span></a><span class="p">,</span>
+    <span class="n">ellipse_array</span><span class="o">=</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">params</span></a><span class="p">,</span>
     <span class="n">points</span><span class="o">=</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pos</span></a><span class="p">,</span>
 <span class="p">)</span>
 
@@ -870,6 +947,18 @@ can force the ellipse to fit the first ring by masking the zero beam.</p>
 <a href="https://hyperspy.org/hyperspy-doc/current/reference/base_classes/axes.html#hyperspy.axes.AxesManager.signal_axes" title="hyperspy.axes.AxesManager.signal_axes" class="sphx-glr-backref-module-hyperspy-axes sphx-glr-backref-type-py-property"><span class="n">summed</span><span class="o">.</span><span class="n">axes_manager</span><span class="o">.</span><span class="n">signal_axes</span></a><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">scale</span> <span class="o">=</span> <span class="mi">1</span>
 <a href="https://hyperspy.org/hyperspy-doc/current/reference/base_classes/axes.html#hyperspy.axes.AxesManager.signal_axes" title="hyperspy.axes.AxesManager.signal_axes" class="sphx-glr-backref-module-hyperspy-axes sphx-glr-backref-type-py-property"><span class="n">summed</span><span class="o">.</span><span class="n">axes_manager</span><span class="o">.</span><span class="n">signal_axes</span></a><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">offset</span> <span class="o">=</span> <span class="mi">0</span>
 <a href="https://hyperspy.org/hyperspy-doc/current/reference/base_classes/axes.html#hyperspy.axes.AxesManager.signal_axes" title="hyperspy.axes.AxesManager.signal_axes" class="sphx-glr-backref-module-hyperspy-axes sphx-glr-backref-type-py-property"><span class="n">summed</span><span class="o">.</span><span class="n">axes_manager</span><span class="o">.</span><span class="n">signal_axes</span></a><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">offset</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/pyxem/utils/ransac_ellipse_tools.py:677: FutureWarning: Calling ``EllipseModel()`` (without arguments) has been deprecated since version 0.26 and will be removed in version 2.2; see help for ``EllipseModel``.
+  e = EllipseModel()
+/opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/pyxem/utils/ransac_ellipse_tools.py:678: FutureWarning: `estimate` is deprecated since version 0.26 and will be removed in version 2.2. Please use `EllipseModel.from_estimate` class constructor instead.
+  converge = e.estimate(data=pos)
+/opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/pyxem/utils/ransac_ellipse_tools.py:681: FutureWarning: `params` is deprecated since version 0.26 and will be removed in version 2.2. `params` attribute deprecated; use `center, axis_lengths, theta` attributes instead.
+  affine = _ellipse_to_affine(el.params[3], el.params[2], el.params[4])
+/opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/pyxem/utils/ransac_ellipse_tools.py:682: FutureWarning: `params` is deprecated since version 0.26 and will be removed in version 2.2. `params` attribute deprecated; use `center, axis_lengths, theta` attributes instead.
+  center = (el.params[0], el.params[1])
+/opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/pyxem/utils/ransac_ellipse_tools.py:686: FutureWarning: `params` is deprecated since version 0.26 and will be removed in version 2.2. `params` attribute deprecated; use `center, axis_lengths, theta` attributes instead.
+  return center, affine, el.params, pos
 </pre></div>
 </div>
 </section>
@@ -895,9 +984,9 @@ That should end up a nice straight line</p>
 <li><img alt="Signal" class="sphx-glr-multi-img" src="../../_images/sphx_glr_FEM_004.png" srcset="../../_images/sphx_glr_FEM_004.png"/></li>
 </ul>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/26 [00:00&lt;?, ?it/s]
-  4%|▍         | 1/26 [00:02&lt;01:13,  2.94s/it]
- 65%|██████▌   | 17/26 [00:03&lt;00:01,  7.72it/s]
-100%|██████████| 26/26 [00:03&lt;00:00,  8.42it/s]
+  4%|▍         | 1/26 [00:03&lt;01:20,  3.20s/it]
+ 65%|██████▌   | 17/26 [00:03&lt;00:01,  7.09it/s]
+100%|██████████| 26/26 [00:03&lt;00:00,  7.74it/s]
 </pre></div>
 </div>
 </section>
@@ -921,13 +1010,13 @@ use a gain of 1.</p>
 <li><img alt="Signal" class="sphx-glr-multi-img" src="../../_images/sphx_glr_FEM_006.png" srcset="../../_images/sphx_glr_FEM_006.png"/></li>
 </ul>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/51 [00:00&lt;?, ?it/s]
-  2%|▏         | 1/51 [00:00&lt;00:42,  1.17it/s]
- 96%|█████████▌| 49/51 [00:00&lt;00:00, 69.64it/s]
-100%|██████████| 51/51 [00:00&lt;00:00, 53.35it/s]
+  2%|▏         | 1/51 [00:00&lt;00:44,  1.11it/s]
+ 86%|████████▋ | 44/51 [00:00&lt;00:00, 59.89it/s]
+100%|██████████| 51/51 [00:01&lt;00:00, 50.79it/s]
 
   0%|          | 0/51 [00:00&lt;?, ?it/s]
-  2%|▏         | 1/51 [00:00&lt;00:33,  1.48it/s]
-100%|██████████| 51/51 [00:00&lt;00:00, 69.03it/s]
+  2%|▏         | 1/51 [00:00&lt;00:35,  1.42it/s]
+100%|██████████| 51/51 [00:00&lt;00:00, 66.10it/s]
 </pre></div>
 </div>
 </section>
@@ -993,21 +1082,21 @@ in Zhang et al. Ultramicroscopy 171, 89–95 (2016), DOI: 10.1016/j.ultramic.201
 </pre></div>
 </div>
 <img alt="FEM" class="sphx-glr-single-img" src="../../_images/sphx_glr_FEM_007.png" srcset="../../_images/sphx_glr_FEM_007.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/49 [00:00&lt;?, ?it/s]
-100%|██████████| 49/49 [00:00&lt;00:00, 844.87it/s]
+100%|██████████| 49/49 [00:00&lt;00:00, 782.02it/s]
 
   0%|          | 0/49 [00:00&lt;?, ?it/s]
-100%|██████████| 49/49 [00:00&lt;00:00, 1399.31it/s]
+100%|██████████| 49/49 [00:00&lt;00:00, 1296.65it/s]
 
   0%|          | 0/51 [00:00&lt;?, ?it/s]
-100%|██████████| 51/51 [00:00&lt;00:00, 826.41it/s]
+100%|██████████| 51/51 [00:00&lt;00:00, 810.88it/s]
 
   0%|          | 0/51 [00:00&lt;?, ?it/s]
-100%|██████████| 51/51 [00:00&lt;00:00, 1393.86it/s]
+100%|██████████| 51/51 [00:00&lt;00:00, 1315.26it/s]
 
 &lt;Axes: xlabel='Radius ($nm^{-1}$)', ylabel='Intensity'&gt;
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 42.257 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 52.917 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-amorphous-characterization-fem-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/5e921b70d014b71510213fabf69d880f/FEM.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">FEM.ipynb</span></code></a></p>
@@ -1098,7 +1187,7 @@ in Zhang et al. Ultramicroscopy 171, 89–95 (2016), DOI: 10.1016/j.ultramic.201
 </div>
 <div class="footer-item">
 <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
     <br/>
 </p>
 </div>
