@@ -1,6 +1,0 @@
-to\_roi
-=======
-
-.. currentmodule:: pyxem.signals
-
-.. automethod:: DiffractionVectors2D.to_roi

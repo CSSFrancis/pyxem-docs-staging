@@ -1,6 +1,0 @@
-add\_navigation\_signal
-=======================
-
-.. currentmodule:: pyxem.signals
-
-.. automethod:: CommonDiffraction.add_navigation_signal

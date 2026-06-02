@@ -1,6 +1,0 @@
-get\_pdf
-========
-
-.. currentmodule:: pyxem.generators
-
-.. automethod:: PDFGenerator1D.get_pdf

@@ -1,9 +1,0 @@
-isiterable
-==========
-
-.. currentmodule:: pyxem.utils.diffraction
-
-.. autofunction:: isiterable
-
-.. minigallery:: pyxem.utils.diffraction.isiterable
-    :add-heading: Examples using ``isiterable``

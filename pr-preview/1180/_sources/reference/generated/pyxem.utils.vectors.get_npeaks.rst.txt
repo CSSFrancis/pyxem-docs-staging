@@ -1,9 +1,0 @@
-get\_npeaks
-===========
-
-.. currentmodule:: pyxem.utils.vectors
-
-.. autofunction:: get_npeaks
-
-.. minigallery:: pyxem.utils.vectors.get_npeaks
-    :add-heading: Examples using ``get_npeaks``

@@ -1,6 +1,0 @@
-get\_ncc\_matrix
-================
-
-.. currentmodule:: pyxem.signals
-
-.. automethod:: VDFSegment.get_ncc_matrix

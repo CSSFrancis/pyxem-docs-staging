@@ -1,6 +1,0 @@
-moveto
-======
-
-.. currentmodule:: pyxem.utils.diffraction
-
-.. automethod:: tqdm.moveto

@@ -1,9 +1,0 @@
-get\_electron\_wavelength
-=========================
-
-.. currentmodule:: pyxem.utils.calibration
-
-.. autofunction:: get_electron_wavelength
-
-.. minigallery:: pyxem.utils.calibration.get_electron_wavelength
-    :add-heading: Examples using ``get_electron_wavelength``

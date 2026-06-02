@@ -1,6 +1,0 @@
-detector
-========
-
-.. currentmodule:: pyxem.utils.calibration
-
-.. automethod:: Calibration.detector

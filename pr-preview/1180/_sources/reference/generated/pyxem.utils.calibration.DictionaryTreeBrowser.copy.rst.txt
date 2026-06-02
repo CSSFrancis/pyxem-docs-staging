@@ -1,6 +1,0 @@
-copy
-====
-
-.. currentmodule:: pyxem.utils.calibration
-
-.. automethod:: DictionaryTreeBrowser.copy
