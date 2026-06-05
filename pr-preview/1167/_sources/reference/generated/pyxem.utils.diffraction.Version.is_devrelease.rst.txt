@@ -1,9 +1,0 @@
-is\_devrelease
-==============
-
-.. currentmodule:: pyxem.utils.diffraction
-
-.. autoproperty:: Version.is_devrelease
-
-.. minigallery:: pyxem.utils.diffraction.Version.is_devrelease
-    :add-heading: Examples using ``Version.is_devrelease``

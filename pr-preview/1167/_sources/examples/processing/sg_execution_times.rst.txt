@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:07.052** total execution time for 9 files **from examples/processing**:
+**00:57.571** total execution time for 9 files **from examples/processing**:
 
 .. container::
 
@@ -32,16 +32,19 @@ Computation times
    * - Example
      - Time
      - Mem (MB)
+   * - :ref:`sphx_glr_examples_processing_calibrating_recip_space.py` (``calibrating_recip_space.py``)
+     - 00:40.719
+     - 0.0
+   * - :ref:`sphx_glr_examples_processing_vector_finding.py` (``vector_finding.py``)
+     - 00:14.321
+     - 0.0
    * - :ref:`sphx_glr_examples_processing_centering_the_zero_beam.py` (``centering_the_zero_beam.py``)
-     - 00:07.052
+     - 00:02.530
      - 0.0
    * - :ref:`sphx_glr_examples_processing_azimuthal_integration.py` (``azimuthal_integration.py``)
      - 00:00.000
      - 0.0
    * - :ref:`sphx_glr_examples_processing_background_subtraction.py` (``background_subtraction.py``)
-     - 00:00.000
-     - 0.0
-   * - :ref:`sphx_glr_examples_processing_calibrating_recip_space.py` (``calibrating_recip_space.py``)
      - 00:00.000
      - 0.0
    * - :ref:`sphx_glr_examples_processing_circular_hough_transform.py` (``circular_hough_transform.py``)
@@ -54,8 +57,5 @@ Computation times
      - 00:00.000
      - 0.0
    * - :ref:`sphx_glr_examples_processing_template_matching.py` (``template_matching.py``)
-     - 00:00.000
-     - 0.0
-   * - :ref:`sphx_glr_examples_processing_vector_finding.py` (``vector_finding.py``)
      - 00:00.000
      - 0.0

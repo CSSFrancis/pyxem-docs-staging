@@ -1,6 +1,0 @@
-as\_dictionary
-==============
-
-.. currentmodule:: pyxem.utils.calibration
-
-.. automethod:: DictionaryTreeBrowser.as_dictionary

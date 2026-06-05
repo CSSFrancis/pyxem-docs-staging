@@ -1,6 +1,0 @@
-wrapattr
-========
-
-.. currentmodule:: pyxem.utils.diffraction
-
-.. automethod:: tqdm.wrapattr

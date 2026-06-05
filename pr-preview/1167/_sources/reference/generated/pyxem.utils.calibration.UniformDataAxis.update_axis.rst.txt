@@ -1,6 +1,0 @@
-update\_axis
-============
-
-.. currentmodule:: pyxem.utils.calibration
-
-.. automethod:: UniformDataAxis.update_axis
