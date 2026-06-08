@@ -1,6 +1,0 @@
-convert\_signal\_units
-======================
-
-.. currentmodule:: pyxem.utils.calibration
-
-.. automethod:: Calibration.convert_signal_units

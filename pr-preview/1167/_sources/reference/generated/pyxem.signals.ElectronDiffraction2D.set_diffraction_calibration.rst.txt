@@ -1,6 +1,0 @@
-set\_diffraction\_calibration
-=============================
-
-.. currentmodule:: pyxem.signals
-
-.. automethod:: ElectronDiffraction2D.set_diffraction_calibration

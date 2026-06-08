@@ -1,6 +1,0 @@
-set\_diffraction\_calibration
-=============================
-
-.. currentmodule:: pyxem.generators
-
-.. automethod:: ReducedIntensityGenerator1D.set_diffraction_calibration

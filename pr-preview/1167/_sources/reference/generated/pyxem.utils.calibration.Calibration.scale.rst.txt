@@ -1,9 +1,0 @@
-scale
-=====
-
-.. currentmodule:: pyxem.utils.calibration
-
-.. autoproperty:: Calibration.scale
-
-.. minigallery:: pyxem.utils.calibration.Calibration.scale
-    :add-heading: Examples using ``Calibration.scale``

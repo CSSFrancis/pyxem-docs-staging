@@ -1,6 +1,0 @@
-to\_cartesian
-=============
-
-.. currentmodule:: pyxem.signals
-
-.. automethod:: PolarVectors.to_cartesian

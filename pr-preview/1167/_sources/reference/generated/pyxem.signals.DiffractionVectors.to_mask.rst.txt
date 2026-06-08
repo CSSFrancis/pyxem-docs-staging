@@ -1,6 +1,0 @@
-to\_mask
-========
-
-.. currentmodule:: pyxem.signals
-
-.. automethod:: DiffractionVectors.to_mask

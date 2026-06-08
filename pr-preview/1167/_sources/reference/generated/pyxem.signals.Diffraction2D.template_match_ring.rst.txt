@@ -1,6 +1,0 @@
-template\_match\_ring
-=====================
-
-.. currentmodule:: pyxem.signals
-
-.. automethod:: Diffraction2D.template_match_ring

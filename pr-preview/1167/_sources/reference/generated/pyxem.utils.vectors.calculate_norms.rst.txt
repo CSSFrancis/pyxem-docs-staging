@@ -1,9 +1,0 @@
-calculate\_norms
-================
-
-.. currentmodule:: pyxem.utils.vectors
-
-.. autofunction:: calculate_norms
-
-.. minigallery:: pyxem.utils.vectors.calculate_norms
-    :add-heading: Examples using ``calculate_norms``
