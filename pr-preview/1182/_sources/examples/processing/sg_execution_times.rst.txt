@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**01:01.434** total execution time for 9 files **from examples/processing**:
+**00:58.129** total execution time for 9 files **from examples/processing**:
 
 .. container::
 
@@ -33,13 +33,13 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_examples_processing_calibrating_recip_space.py` (``calibrating_recip_space.py``)
-     - 00:41.505
+     - 00:40.864
      - 0.0
    * - :ref:`sphx_glr_examples_processing_vector_finding.py` (``vector_finding.py``)
-     - 00:17.305
+     - 00:14.670
      - 0.0
    * - :ref:`sphx_glr_examples_processing_centering_the_zero_beam.py` (``centering_the_zero_beam.py``)
-     - 00:02.625
+     - 00:02.595
      - 0.0
    * - :ref:`sphx_glr_examples_processing_azimuthal_integration.py` (``azimuthal_integration.py``)
      - 00:00.000
