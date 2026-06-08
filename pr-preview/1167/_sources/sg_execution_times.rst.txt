@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**10:19.569** total execution time for 32 files **from all galleries**:
+**11:08.937** total execution time for 32 files **from all galleries**:
 
 .. container::
 
@@ -33,37 +33,37 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_examples_orientation_mapping_multi_phase_orientation.py` (``../examples/orientation_mapping/multi_phase_orientation.py``)
-     - 05:47.389
+     - 05:46.701
      - 0.0
    * - :ref:`sphx_glr_examples_amorphous_characterization_FEM.py` (``../examples/amorphous_characterization/FEM.py``)
-     - 01:47.823
-     - 0.0
-   * - :ref:`sphx_glr_examples_processing_calibrating_recip_space.py` (``../examples/processing/calibrating_recip_space.py``)
-     - 00:40.719
-     - 0.0
-   * - :ref:`sphx_glr_examples_strain_mapping_strain_mapping.py` (``../examples/strain_mapping/strain_mapping.py``)
-     - 00:38.422
-     - 0.0
-   * - :ref:`sphx_glr_examples_orientation_mapping_single_phase_orientation.py` (``../examples/orientation_mapping/single_phase_orientation.py``)
-     - 00:29.578
+     - 01:59.831
      - 0.0
    * - :ref:`sphx_glr_examples_standards_flat_ewalds_sphere_assumption.py` (``../examples/standards/flat_ewalds_sphere_assumption.py``)
-     - 00:19.423
+     - 01:03.124
      - 0.0
-   * - :ref:`sphx_glr_examples_orientation_mapping_on_zone_orientation.py` (``../examples/orientation_mapping/on_zone_orientation.py``)
-     - 00:14.999
+   * - :ref:`sphx_glr_examples_processing_calibrating_recip_space.py` (``../examples/processing/calibrating_recip_space.py``)
+     - 00:40.777
+     - 0.0
+   * - :ref:`sphx_glr_examples_strain_mapping_strain_mapping.py` (``../examples/strain_mapping/strain_mapping.py``)
+     - 00:32.200
+     - 0.0
+   * - :ref:`sphx_glr_examples_orientation_mapping_single_phase_orientation.py` (``../examples/orientation_mapping/single_phase_orientation.py``)
+     - 00:29.046
      - 0.0
    * - :ref:`sphx_glr_examples_processing_vector_finding.py` (``../examples/processing/vector_finding.py``)
-     - 00:14.321
+     - 00:15.683
+     - 0.0
+   * - :ref:`sphx_glr_examples_orientation_mapping_on_zone_orientation.py` (``../examples/orientation_mapping/on_zone_orientation.py``)
+     - 00:14.858
      - 0.0
    * - :ref:`sphx_glr_examples_dpc_magnetic_dpc.py` (``../examples/dpc/magnetic_dpc.py``)
-     - 00:02.762
+     - 00:02.674
      - 0.0
    * - :ref:`sphx_glr_examples_processing_centering_the_zero_beam.py` (``../examples/processing/centering_the_zero_beam.py``)
-     - 00:02.530
+     - 00:02.491
      - 0.0
    * - :ref:`sphx_glr_examples_plotting_fast_plotting_tricks.py` (``../examples/plotting/fast_plotting_tricks.py``)
-     - 00:01.603
+     - 00:01.552
      - 0.0
    * - :ref:`sphx_glr_examples_dpc_electric_field_dpc.py` (``../examples/dpc/electric_field_dpc.py``)
      - 00:00.000

@@ -1034,7 +1034,7 @@ uses the Eucledian distance metric.</p></li>
 for it to be considered a core sample, i.e. to not be considered
 noise. Will be passed to get_unique_vectors if no unique vectors
 are given. Only used if method==’DBSCAN’.</p></li>
-<li><p><strong>image_to_plot_on</strong> (<em>BaseSignal, optional</em>) – If provided, the vectors will be plotted on top of this image.
+<li><p><strong>image_to_plot_on</strong> (<em>~hyperspy.api.signals.BaseSignal, optional</em>) – If provided, the vectors will be plotted on top of this image.
 The image must be calibrated in terms of offset and scale.</p></li>
 <li><p><strong>image_cmap</strong> (<em>str, optional</em>) – The colormap to plot the image in.</p></li>
 <li><p><strong>plot_label_colors</strong> (<em>bool, optional</em>) – If True (default is False), also the vectors contained within each
@@ -1050,7 +1050,7 @@ plot_label_colors is True and requires method==’DBSCAN’.</p></li>
 <dd class="field-even"><p><strong>fig</strong> – The plot as a matplotlib figure.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>matplotlib figure</p>
+<dd class="field-odd"><p><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="(in Matplotlib v3.10.9)"><em>Figure</em></a></p>
 </dd>
 </dl>
 </dd></dl>
