@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:01.552** total execution time for 4 files **from examples/plotting**:
+**00:01.628** total execution time for 4 files **from examples/plotting**:
 
 .. container::
 
@@ -33,7 +33,7 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_examples_plotting_fast_plotting_tricks.py` (``fast_plotting_tricks.py``)
-     - 00:01.552
+     - 00:01.628
      - 0.0
    * - :ref:`sphx_glr_examples_plotting_interactive_line_profile.py` (``interactive_line_profile.py``)
      - 00:00.000

@@ -1022,9 +1022,9 @@ slice the image for 1d integration.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
-<li><p><strong>indexes</strong> (<em>np.ndarray (n, 2)</em>) – The indexes of the pixels to integrate flattened</p></li>
-<li><p><strong>factors</strong> (<em>np.ndarray (n)</em>) – The factors(representing the pixel fraction) to multiply each pixel value by</p></li>
-<li><p><strong>factor_slices</strong> (<em>np.ndarray (npt+1)</em>) – The start and end index of the factors for each slice such that for some
+<li><p><strong>indexes</strong> (<em>~numpy.ndarray (n, 2)</em>) – The indexes of the pixels to integrate flattened</p></li>
+<li><p><strong>factors</strong> (<em>~numpy.ndarray (n)</em>) – The factors(representing the pixel fraction) to multiply each pixel value by</p></li>
+<li><p><strong>factor_slices</strong> (<em>~numpy.ndarray (npt+1)</em>) – The start and end index of the factors for each slice such that for some
 slice i, factors[factor_slices[i]:factor_slices[i+1]] is the factors for that radial slice</p></li>
 <li><p><strong>radial_range</strong> (<em>tuple</em>) – The range of the radial extent used for the integration</p></li>
 </ul>

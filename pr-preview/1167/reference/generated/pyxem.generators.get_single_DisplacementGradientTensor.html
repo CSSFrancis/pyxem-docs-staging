@@ -1014,9 +1014,9 @@ vectors, Vu, onto strained vectors, Vs</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>Vs</strong> (<em>numpy.array</em>) – A 2 x n array containing the Cartesian components of two strained basis
+<li><p><strong>Vs</strong> (<em>np.ndarray</em>) – A 2 x n array containing the Cartesian components of two strained basis
 vectors, V and U, defined as row vectors.</p></li>
-<li><p><strong>Vu</strong> (<em>numpy.array</em>) – A 2 x n array containing the Cartesian components of two unstrained
+<li><p><strong>Vu</strong> (<em>np.ndarray</em>) – A 2 x n array containing the Cartesian components of two unstrained
 basis vectors, V and U, defined as row vectors.</p></li>
 <li><p><strong>weights</strong> (<em>list</em>) – of weights to be passed to the least squares optimiser</p></li>
 <li><p><strong>return_residuals</strong> (<em>Bool</em>) – If the residuals for the least squares optimiser should be returned.</p></li>
@@ -1024,8 +1024,8 @@ basis vectors, V and U, defined as row vectors.</p></li>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
-<li><p><strong>D</strong> (<em>numpy.array</em>) – A 3 x 3 displacement gradient tensor (measured in reciprocal space).</p></li>
-<li><p><strong>residuals</strong> (<em>numpy.array</em>) – The residuals for the least squares fitting.</p></li>
+<li><p><strong>D</strong> (<em>np.ndarray</em>) – A 3 x 3 displacement gradient tensor (measured in reciprocal space).</p></li>
+<li><p><strong>residuals</strong> (<em>np.ndarray</em>) – The residuals for the least squares fitting.</p></li>
 </ul>
 </p>
 </dd>

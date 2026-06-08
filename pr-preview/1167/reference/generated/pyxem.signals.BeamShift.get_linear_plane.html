@@ -1039,7 +1039,7 @@ scanning parameters should be used.</p>
 shift signal. The True values will be masked.</p></li>
 <li><p><strong>fit_corners</strong> (<em>float, optional</em>) – Make a mask so that the planes are fitted to the corners of the
 signal. This mush be set with a number, like 0.05 (5%) or 0.10 (10%).</p></li>
-<li><p><strong>initial_values</strong> (<em>array of floats, optional</em>) – Initial guess for the plane parameters. Useful to vary if the plane fitting
+<li><p><strong>initial_values</strong> (<em>~numpy.ndarray of floats, optional</em>) – Initial guess for the plane parameters. Useful to vary if the plane fitting
 does not give desirable results.
 The horizontal- and vertical-shifts are described by two linear planes
 with three parameters. The two first parameters, d/dx and d/dy, are the changes
