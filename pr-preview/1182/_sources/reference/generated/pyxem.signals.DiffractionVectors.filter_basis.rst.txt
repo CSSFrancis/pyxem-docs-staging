@@ -1,6 +1,0 @@
-filter\_basis
-=============
-
-.. currentmodule:: pyxem.signals
-
-.. automethod:: DiffractionVectors.filter_basis

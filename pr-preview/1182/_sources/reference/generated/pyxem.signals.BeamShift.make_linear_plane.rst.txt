@@ -1,6 +1,0 @@
-make\_linear\_plane
-===================
-
-.. currentmodule:: pyxem.signals
-
-.. automethod:: BeamShift.make_linear_plane

@@ -1,6 +1,0 @@
-threshold\_and\_mask
-====================
-
-.. currentmodule:: pyxem.signals
-
-.. automethod:: Diffraction2D.threshold_and_mask

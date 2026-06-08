@@ -1,6 +1,0 @@
-calibrate\_electric\_shifts
-===========================
-
-.. currentmodule:: pyxem.signals
-
-.. automethod:: BeamShift.calibrate_electric_shifts

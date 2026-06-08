@@ -1,6 +1,0 @@
-extract\_intensities
-====================
-
-.. currentmodule:: pyxem.generators
-
-.. automethod:: IntegrationGenerator.extract_intensities

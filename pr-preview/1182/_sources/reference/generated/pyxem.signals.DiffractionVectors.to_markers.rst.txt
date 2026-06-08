@@ -1,6 +1,0 @@
-to\_markers
-===========
-
-.. currentmodule:: pyxem.signals
-
-.. automethod:: DiffractionVectors.to_markers

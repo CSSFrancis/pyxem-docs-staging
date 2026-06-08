@@ -1,6 +1,0 @@
-filter\_magnitude
-=================
-
-.. currentmodule:: pyxem.signals
-
-.. automethod:: DiffractionVectors.filter_magnitude

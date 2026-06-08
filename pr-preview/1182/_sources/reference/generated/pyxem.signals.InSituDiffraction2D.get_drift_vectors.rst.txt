@@ -1,6 +1,0 @@
-get\_drift\_vectors
-===================
-
-.. currentmodule:: pyxem.signals
-
-.. automethod:: InSituDiffraction2D.get_drift_vectors
