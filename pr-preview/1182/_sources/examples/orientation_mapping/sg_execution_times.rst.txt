@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**07:06.996** total execution time for 3 files **from examples/orientation_mapping**:
+**07:07.046** total execution time for 3 files **from examples/orientation_mapping**:
 
 .. container::
 
@@ -33,11 +33,11 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_examples_orientation_mapping_multi_phase_orientation.py` (``multi_phase_orientation.py``)
-     - 06:20.063
+     - 06:20.544
      - 0.0
    * - :ref:`sphx_glr_examples_orientation_mapping_single_phase_orientation.py` (``single_phase_orientation.py``)
-     - 00:31.255
+     - 00:31.021
      - 0.0
    * - :ref:`sphx_glr_examples_orientation_mapping_on_zone_orientation.py` (``on_zone_orientation.py``)
-     - 00:15.678
+     - 00:15.481
      - 0.0
