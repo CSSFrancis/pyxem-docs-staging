@@ -1,0 +1,294 @@
+:orphan:
+
+.. _tutorials-index:
+
+Gallery of Tutorials
+====================
+
+Below is a gallery of full worked tutorials for different operations in pyxem.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Amorphous Characterization
+==========================
+Below is a gallery of Tutorials on how to characterize amorphous materials.
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Amorphous materials lack long-range order, but they often have characteristic short-range and medium-range order that can be probed with 4D-STEM. Angular correlation analysis measures the statistical relationship between the diffracted intensity at two different azimuthal angles at the same scattering vector magnitude |k|.  Peaks in the angular power spectrum reveal preferred bond angles — for example, five-fold or icosahedral symmetry in metallic glasses.">
+
+.. only:: html
+
+  .. image:: /tutorials/amorphous_characterization/images/thumb/sphx_glr_angular_correlations_thumb.png
+    :alt:
+
+  :doc:`/tutorials/amorphous_characterization/angular_correlations`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Angular Correlations of Amorphous Materials</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The pair distribution function (PDF), g(r), gives the probability of finding an atom at distance r from a reference atom.  Unlike conventional diffraction, the PDF contains information about local atomic structure even in disordered or amorphous materials where Bragg peaks are absent.">
+
+.. only:: html
+
+  .. image:: /tutorials/amorphous_characterization/images/thumb/sphx_glr_pair_distribution_function_thumb.png
+    :alt:
+
+  :doc:`/tutorials/amorphous_characterization/pair_distribution_function`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Pair Distribution Function Analysis</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This tutorial demonstrates orientation mapping for molecular glass films using pyxem and HyperSpy. The workflow produces figures similar to those in:">
+
+.. only:: html
+
+  .. image:: /tutorials/amorphous_characterization/images/thumb/sphx_glr_molecular_orientation_thumb.png
+    :alt:
+
+  :doc:`/tutorials/amorphous_characterization/molecular_orientation`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Orientation Mapping for Molecular Glasses</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Orientation Mapping
+===================
+
+Below are full worked tutorials for orientation mapping workflows in pyxem.
+These tutorials cover template-matching-based orientation determination for
+both single-phase and multi-phase polycrystalline samples.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Orientation mapping in 4D-STEM determines the crystallographic orientation at every scan position across a polycrystalline or multi-grain sample.  Unlike EBSD (which only samples the surface), 4D-STEM captures the full diffraction geometry and can resolve grains in bulk and thin specimens alike.">
+
+.. only:: html
+
+  .. image:: /tutorials/orientation_mapping/images/thumb/sphx_glr_orientation_mapping_real_data_thumb.png
+    :alt:
+
+  :doc:`/tutorials/orientation_mapping/orientation_mapping_real_data`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Orientation Mapping of Polycrystalline Silicon</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Phase Contrast
+==============
+
+Below is a gallery of full worked tutorials for phase contrast imaging in pyxem.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This tutorial shows how to use pyxem to analyse 4D-STEM data from magnetic materials using differential phase contrast (DPC). For more information about this imaging method, see the Wikipedia article on Scanning Transmission Electron Microscopy, which has a subsection on DPC.">
+
+.. only:: html
+
+  .. image:: /tutorials/phase_contrast/images/thumb/sphx_glr_analysis_of_magnetic_sample_thumb.png
+    :alt:
+
+  :doc:`/tutorials/phase_contrast/analysis_of_magnetic_sample`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Analysing Magnetic Materials using STEM-DPC</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Processing Workflows
+====================
+
+Below are full worked tutorials for common 4D-STEM processing workflows in pyxem.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This tutorial walks through a complete 4D-STEM data inspection and preprocessing workflow using a real GaAs twinned nanowire dataset. It covers:">
+
+.. only:: html
+
+  .. image:: /tutorials/processing/images/thumb/sphx_glr_4dstem_data_inspection_thumb.png
+    :alt:
+
+  :doc:`/tutorials/processing/4dstem_data_inspection`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">4D-STEM Data Inspection and Preprocessing</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Strain Mapping
+==============
+
+Below are full worked tutorials for strain mapping workflows in pyxem.
+These tutorials show how to extract nanoscale strain fields from 4D-STEM data
+by tracking shifts in diffraction spot positions.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Strain mapping in 4D-STEM measures local lattice distortions by tracking how diffraction spot positions shift relative to an unstrained reference.  Where orientation mapping asks &quot;which grain orientation is here?&quot;, strain mapping asks &quot;how is the lattice stretched or sheared here?&quot;.">
+
+.. only:: html
+
+  .. image:: /tutorials/strain_mapping/images/thumb/sphx_glr_strain_mapping_real_data_thumb.png
+    :alt:
+
+  :doc:`/tutorials/strain_mapping/strain_mapping_real_data`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Strain Mapping of a ZrNb Precipitate</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+   :includehidden:
+
+
+   /tutorials/amorphous_characterization/index.rst
+   /tutorials/orientation_mapping/index.rst
+   /tutorials/phase_contrast/index.rst
+   /tutorials/processing/index.rst
+   /tutorials/strain_mapping/index.rst
+
+
+.. only:: html
+
+  .. container:: sphx-glr-footer sphx-glr-footer-gallery
+
+    .. container:: sphx-glr-download sphx-glr-download-python
+
+      :download:`Download all examples in Python source code: tutorials_python.zip </tutorials/tutorials_python.zip>`
+
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+      :download:`Download all examples in Jupyter notebooks: tutorials_jupyter.zip </tutorials/tutorials_jupyter.zip>`
+
+
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_

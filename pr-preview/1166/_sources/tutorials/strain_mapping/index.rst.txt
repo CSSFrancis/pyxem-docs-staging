@@ -1,0 +1,52 @@
+
+
+.. _sphx_glr_tutorials_strain_mapping:
+
+Strain Mapping
+==============
+
+Below are full worked tutorials for strain mapping workflows in pyxem.
+These tutorials show how to extract nanoscale strain fields from 4D-STEM data
+by tracking shifts in diffraction spot positions.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Strain mapping in 4D-STEM measures local lattice distortions by tracking how diffraction spot positions shift relative to an unstrained reference.  Where orientation mapping asks &quot;which grain orientation is here?&quot;, strain mapping asks &quot;how is the lattice stretched or sheared here?&quot;.">
+
+.. only:: html
+
+  .. image:: /tutorials/strain_mapping/images/thumb/sphx_glr_strain_mapping_real_data_thumb.png
+    :alt:
+
+  :doc:`/tutorials/strain_mapping/strain_mapping_real_data`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Strain Mapping of a ZrNb Precipitate</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /tutorials/strain_mapping/strain_mapping_real_data
+

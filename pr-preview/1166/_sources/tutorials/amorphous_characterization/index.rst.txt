@@ -1,0 +1,84 @@
+
+
+.. _sphx_glr_tutorials_amorphous_characterization:
+
+Amorphous Characterization
+==========================
+Below is a gallery of Tutorials on how to characterize amorphous materials.
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Amorphous materials lack long-range order, but they often have characteristic short-range and medium-range order that can be probed with 4D-STEM. Angular correlation analysis measures the statistical relationship between the diffracted intensity at two different azimuthal angles at the same scattering vector magnitude |k|.  Peaks in the angular power spectrum reveal preferred bond angles — for example, five-fold or icosahedral symmetry in metallic glasses.">
+
+.. only:: html
+
+  .. image:: /tutorials/amorphous_characterization/images/thumb/sphx_glr_angular_correlations_thumb.png
+    :alt:
+
+  :doc:`/tutorials/amorphous_characterization/angular_correlations`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Angular Correlations of Amorphous Materials</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The pair distribution function (PDF), g(r), gives the probability of finding an atom at distance r from a reference atom.  Unlike conventional diffraction, the PDF contains information about local atomic structure even in disordered or amorphous materials where Bragg peaks are absent.">
+
+.. only:: html
+
+  .. image:: /tutorials/amorphous_characterization/images/thumb/sphx_glr_pair_distribution_function_thumb.png
+    :alt:
+
+  :doc:`/tutorials/amorphous_characterization/pair_distribution_function`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Pair Distribution Function Analysis</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This tutorial demonstrates orientation mapping for molecular glass films using pyxem and HyperSpy. The workflow produces figures similar to those in:">
+
+.. only:: html
+
+  .. image:: /tutorials/amorphous_characterization/images/thumb/sphx_glr_molecular_orientation_thumb.png
+    :alt:
+
+  :doc:`/tutorials/amorphous_characterization/molecular_orientation`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Orientation Mapping for Molecular Glasses</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /tutorials/amorphous_characterization/angular_correlations
+   /tutorials/amorphous_characterization/pair_distribution_function
+   /tutorials/amorphous_characterization/molecular_orientation
+

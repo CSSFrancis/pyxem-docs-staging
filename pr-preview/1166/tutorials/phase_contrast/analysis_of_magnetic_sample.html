@@ -1,0 +1,1921 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Analysing Magnetic Materials using STEM-DPC &#8212; pyxem 0.21.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d75fae25" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-codeautolink.css?v=b2176991" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="../../_static/documentation_options.js?v=88e4c0c0"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tutorials/phase_contrast/analysis_of_magnetic_sample';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.18.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://pyxem.org/dev/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.21';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="icon" href="../../_static/logo.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Processing Workflows" href="../processing/index.html" />
+    <link rel="prev" title="Phase Contrast" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.21.0" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+<aside class="bd-header-announcement" aria-label="Announcement">
+  <div class="bd-header-announcement__content">Check out the new <a href='https://pyxem.org/dev/examples/index.html'>Examples Gallery!</a> </div>
+</aside>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="pyxem 0.21.0 documentation - Home"/>
+    <img src="../../_static/logo.png" class="logo__image only-dark pst-js-only" alt="pyxem 0.21.0 documentation - Home"/>
+  
+  
+</a></div>
+    
+      <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../intro.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../reference/index.html">
+    Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../dev_guide/index.html">
+    Dev Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../changelog.html">
+    Changelog
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyxem/pyxem" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../intro.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../reference/index.html">
+    Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../dev_guide/index.html">
+    Dev Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../changelog.html">
+    Changelog
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyxem/pyxem" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../user_guide/installing.html">Installing pyxem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user_guide/using_a_jupyter_notebook.html">Using Jupyter Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user_guide/loading_data.html">Loading Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user_guide/distributed_big_data.html">Big Data</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../user_guide/gpu_computations.html">GPU Computing</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Usage</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Gallery of Tutorials</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../examples/index.html">Gallery of Examples</a></li>
+
+
+
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../reference/index.html">API reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../reference/generated/pyxem.data.html">data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.data.au_grating.html">au_grating</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.data.pdnip_glass.html">pdnip_glass</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.data.zrnb_precipitate.html">zrnb_precipitate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.data.twinned_nanowire.html">twinned_nanowire</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.data.sample_with_g.html">sample_with_g</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.data.mgo_nanocrystals.html">mgo_nanocrystals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.data.tilt_boundary_data.html">tilt_boundary_data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.data.si_phase.html">si_phase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.data.si_tilt.html">si_tilt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.data.si_grains.html">si_grains</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.data.si_grains_simple.html">si_grains_simple</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.data.si_rotations_line.html">si_rotations_line</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.data.simulated_stripes.html">simulated_stripes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.data.fe_multi_phase_grains.html">fe_multi_phase_grains</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.data.fe_fcc_phase.html">fe_fcc_phase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.data.fe_bcc_phase.html">fe_bcc_phase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.data.cuag_orientations.html">cuag_orientations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.data.organic_semiconductor.html">organic_semiconductor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.data.feal_stripes.html">feal_stripes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.data.sped_ag.html">sped_ag</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.data.pdcusi_insitu.html">pdcusi_insitu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.data.simulated_constant_shift_magnitude.html">simulated_constant_shift_magnitude</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.data.au_grating_20cm.html">au_grating_20cm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.data.small_ptychography.html">small_ptychography</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.data.au_phase.html">au_phase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.data.simulated_overlap.html">simulated_overlap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.data.simulated_strain.html">simulated_strain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.data.simulated_pn_junction.html">simulated_pn_junction</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../reference/generated/pyxem.components.html">components</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/generated/pyxem.components.ReducedIntensityCorrectionComponent.html">ReducedIntensityCorrectionComponent</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.components.ReducedIntensityCorrectionComponent.function.html">function</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/generated/pyxem.components.ScatteringFitComponentLobato.html">ScatteringFitComponentLobato</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.components.ScatteringFitComponentLobato.function.html">function</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/generated/pyxem.components.ScatteringFitComponentXTables.html">ScatteringFitComponentXTables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.components.ScatteringFitComponentXTables.function.html">function</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../reference/generated/pyxem.generators.html">generators</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.generators.get_DisplacementGradientMap.html">get_DisplacementGradientMap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.generators.get_single_DisplacementGradientTensor.html">get_single_DisplacementGradientTensor</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/generated/pyxem.generators.CalibrationGenerator.html">CalibrationGenerator</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.generators.CalibrationGenerator.get_correction_matrix.html">get_correction_matrix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.generators.CalibrationGenerator.get_diffraction_calibration.html">get_diffraction_calibration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.generators.CalibrationGenerator.get_distortion_residuals.html">get_distortion_residuals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.generators.CalibrationGenerator.get_elliptical_distortion.html">get_elliptical_distortion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.generators.CalibrationGenerator.get_navigation_calibration.html">get_navigation_calibration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.generators.CalibrationGenerator.get_rotation_calibration.html">get_rotation_calibration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.generators.CalibrationGenerator.plot_calibrated_data.html">plot_calibrated_data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.generators.CalibrationGenerator.plot_corrected_diffraction_pattern.html">plot_corrected_diffraction_pattern</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.generators.IndexationGenerator.html">IndexationGenerator</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/generated/pyxem.generators.VectorIndexationGenerator.html">VectorIndexationGenerator</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.generators.VectorIndexationGenerator.index_vectors.html">index_vectors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.generators.VectorIndexationGenerator.refine_best_orientation.html">refine_best_orientation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.generators.VectorIndexationGenerator.refine_n_best_orientations.html">refine_n_best_orientations</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.generators.TemplateIndexationGenerator.html">TemplateIndexationGenerator</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/generated/pyxem.generators.ProfileIndexationGenerator.html">ProfileIndexationGenerator</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.generators.ProfileIndexationGenerator.index_peaks.html">index_peaks</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/generated/pyxem.generators.AcceleratedIndexationGenerator.html">AcceleratedIndexationGenerator</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.generators.AcceleratedIndexationGenerator.correlate.html">correlate</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/generated/pyxem.generators.IntegrationGenerator.html">IntegrationGenerator</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.generators.IntegrationGenerator.extract_intensities.html">extract_intensities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.generators.IntegrationGenerator.extract_intensities_summation_method.html">extract_intensities_summation_method</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/generated/pyxem.generators.PDFGenerator1D.html">PDFGenerator1D</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.generators.PDFGenerator1D.get_pdf.html">get_pdf</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/generated/pyxem.generators.ReducedIntensityGenerator1D.html">ReducedIntensityGenerator1D</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.generators.ReducedIntensityGenerator1D.fit_atomic_scattering.html">fit_atomic_scattering</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.generators.ReducedIntensityGenerator1D.get_reduced_intensity.html">get_reduced_intensity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.generators.ReducedIntensityGenerator1D.mask_from_bkgd_pattern.html">mask_from_bkgd_pattern</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.generators.ReducedIntensityGenerator1D.mask_reduced_intensity.html">mask_reduced_intensity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.generators.ReducedIntensityGenerator1D.set_diffraction_calibration.html">set_diffraction_calibration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.generators.ReducedIntensityGenerator1D.set_diffraction_offset.html">set_diffraction_offset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.generators.ReducedIntensityGenerator1D.set_s_cutoff.html">set_s_cutoff</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.generators.ReducedIntensityGenerator1D.subtract_bkgd_pattern.html">subtract_bkgd_pattern</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/generated/pyxem.generators.SubpixelrefinementGenerator.html">SubpixelrefinementGenerator</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.generators.SubpixelrefinementGenerator.center_of_mass_method.html">center_of_mass_method</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.generators.SubpixelrefinementGenerator.conventional_xc.html">conventional_xc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.generators.SubpixelrefinementGenerator.local_gaussian_method.html">local_gaussian_method</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.generators.SubpixelrefinementGenerator.reference_xc.html">reference_xc</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/generated/pyxem.generators.VarianceGenerator.html">VarianceGenerator</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.generators.VarianceGenerator.get_diffraction_variance.html">get_diffraction_variance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.generators.VarianceGenerator.get_image_variance.html">get_image_variance</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/generated/pyxem.generators.VirtualImageGenerator.html">VirtualImageGenerator</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.generators.VirtualImageGenerator.get_concentric_virtual_images.html">get_concentric_virtual_images</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.generators.VirtualImageGenerator.get_virtual_images_from_mesh.html">get_virtual_images_from_mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.generators.VirtualImageGenerator.set_ROI_mesh.html">set_ROI_mesh</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/generated/pyxem.generators.VirtualDarkFieldGenerator.html">VirtualDarkFieldGenerator</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.generators.VirtualDarkFieldGenerator.get_virtual_dark_field_images.html">get_virtual_dark_field_images</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../reference/generated/pyxem.libraries.html">libraries</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/generated/pyxem.libraries.CalibrationDataLibrary.html">CalibrationDataLibrary</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.libraries.CalibrationDataLibrary.plot_calibration_data.html">plot_calibration_data</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../reference/generated/pyxem.signals.html">signals</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/generated/pyxem.signals.CommonDiffraction.html">CommonDiffraction</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.CommonDiffraction.unit.html">unit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.CommonDiffraction.add_navigation_signal.html">add_navigation_signal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.CommonDiffraction.get_integrated_intensity.html">get_integrated_intensity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.CommonDiffraction.get_virtual_image.html">get_virtual_image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.CommonDiffraction.plot_integrated_intensity.html">plot_integrated_intensity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.CommonDiffraction.to_device.html">to_device</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.CommonDiffraction.to_host.html">to_host</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/generated/pyxem.signals.Correlation2D.html">Correlation2D</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.Correlation2D.get_angular_power.html">get_angular_power</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.Correlation2D.get_summed_angular_power.html">get_summed_angular_power</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.Correlation2D.get_symmetry_coefficient.html">get_symmetry_coefficient</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.signals.LazyCorrelation2D.html">LazyCorrelation2D</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/generated/pyxem.signals.BeamShift.html">BeamShift</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.BeamShift.beam_energy.html">beam_energy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.BeamShift.calibrate_electric_shifts.html">calibrate_electric_shifts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.BeamShift.get_bivariate_histogram.html">get_bivariate_histogram</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.BeamShift.get_color_signal.html">get_color_signal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.BeamShift.get_linear_plane.html">get_linear_plane</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.BeamShift.get_magnitude_phase_signal.html">get_magnitude_phase_signal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.BeamShift.get_magnitude_signal.html">get_magnitude_signal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.BeamShift.get_phase_signal.html">get_phase_signal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.BeamShift.make_linear_plane.html">make_linear_plane</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.BeamShift.phase_retrieval.html">phase_retrieval</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.BeamShift.pixels_to_calibrated_units.html">pixels_to_calibrated_units</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.BeamShift.plot_on_signal.html">plot_on_signal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.BeamShift.rotate_beam_shifts.html">rotate_beam_shifts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.BeamShift.rotate_scan_dimensions.html">rotate_scan_dimensions</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.signals.LazyBeamShift.html">LazyBeamShift</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/generated/pyxem.signals.DPCSignal1D.html">DPCSignal1D</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.DPCSignal1D.to_beamshift.html">to_beamshift</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/generated/pyxem.signals.DPCSignal2D.html">DPCSignal2D</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.DPCSignal2D.to_beamshift.html">to_beamshift</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.signals.LazyDPCSignal1D.html">LazyDPCSignal1D</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.signals.LazyDPCSignal2D.html">LazyDPCSignal2D</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.signals.DiffractionVariance1D.html">DiffractionVariance1D</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.signals.DiffractionVariance2D.html">DiffractionVariance2D</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.signals.ImageVariance.html">ImageVariance</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/generated/pyxem.signals.DiffractionVectors.html">DiffractionVectors</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.DiffractionVectors.center.html">center</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.DiffractionVectors.column_names.html">column_names</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.DiffractionVectors.detector_shape.html">detector_shape</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.DiffractionVectors.has_navigation_axis.html">has_navigation_axis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.DiffractionVectors.num_columns.html">num_columns</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.DiffractionVectors.num_rows.html">num_rows</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.DiffractionVectors.offsets.html">offsets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.DiffractionVectors.pixel_calibration.html">pixel_calibration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.DiffractionVectors.pixel_vectors.html">pixel_vectors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.DiffractionVectors.scales.html">scales</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.DiffractionVectors.units.html">units</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.DiffractionVectors.calculate_cartesian_coordinates.html">calculate_cartesian_coordinates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.DiffractionVectors.cluster.html">cluster</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.DiffractionVectors.filter_basis.html">filter_basis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.DiffractionVectors.filter_detector_edge.html">filter_detector_edge</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.DiffractionVectors.filter_magnitude.html">filter_magnitude</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.DiffractionVectors.flatten_diffraction_vectors.html">flatten_diffraction_vectors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.DiffractionVectors.from_peaks.html">from_peaks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.DiffractionVectors.get_diffracting_pixels_map.html">get_diffracting_pixels_map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.DiffractionVectors.get_magnitude_histogram.html">get_magnitude_histogram</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.DiffractionVectors.get_magnitudes.html">get_magnitudes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.DiffractionVectors.get_pixel_vectors.html">get_pixel_vectors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.DiffractionVectors.get_strain_maps.html">get_strain_maps</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.DiffractionVectors.get_unique_vectors.html">get_unique_vectors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.DiffractionVectors.plot_diffraction_vectors.html">plot_diffraction_vectors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.DiffractionVectors.plot_diffraction_vectors_on_signal.html">plot_diffraction_vectors_on_signal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.DiffractionVectors.subpixel_refine.html">subpixel_refine</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.DiffractionVectors.to_markers.html">to_markers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.DiffractionVectors.to_mask.html">to_mask</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.DiffractionVectors.to_polar.html">to_polar</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/generated/pyxem.signals.DiffractionVectors1D.html">DiffractionVectors1D</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.DiffractionVectors1D.flatten_diffraction_vectors.html">flatten_diffraction_vectors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.DiffractionVectors1D.plot.html">plot</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/generated/pyxem.signals.DiffractionVectors2D.html">DiffractionVectors2D</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.DiffractionVectors2D.has_navigation_axis.html">has_navigation_axis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.DiffractionVectors2D.filter_detector_edge.html">filter_detector_edge</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.DiffractionVectors2D.from_peaks.html">from_peaks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.DiffractionVectors2D.get_unique_vectors.html">get_unique_vectors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.DiffractionVectors2D.to_roi.html">to_roi</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.signals.Diffraction1D.html">Diffraction1D</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.signals.LazyDiffraction1D.html">LazyDiffraction1D</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.signals.LazyDiffraction2D.html">LazyDiffraction2D</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/generated/pyxem.signals.Diffraction2D.html">Diffraction2D</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.Diffraction2D.add_ellipse_array_as_markers.html">add_ellipse_array_as_markers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.Diffraction2D.add_interactive_line_profile.html">add_interactive_line_profile</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.Diffraction2D.add_peak_array_as_markers.html">add_peak_array_as_markers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.Diffraction2D.angular_mask.html">angular_mask</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.Diffraction2D.apply_affine_transformation.html">apply_affine_transformation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.Diffraction2D.apply_gain_normalisation.html">apply_gain_normalisation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.Diffraction2D.center_direct_beam.html">center_direct_beam</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.Diffraction2D.correct_bad_pixels.html">correct_bad_pixels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.Diffraction2D.filter.html">filter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.Diffraction2D.find_dead_pixels.html">find_dead_pixels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.Diffraction2D.find_hot_pixels.html">find_hot_pixels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.Diffraction2D.flip_diffraction_x.html">flip_diffraction_x</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.Diffraction2D.flip_diffraction_y.html">flip_diffraction_y</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.Diffraction2D.get_azimuthal_integral1d.html">get_azimuthal_integral1d</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.Diffraction2D.get_azimuthal_integral2d.html">get_azimuthal_integral2d</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.Diffraction2D.get_diffraction_vectors.html">get_diffraction_vectors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.Diffraction2D.get_direct_beam_mask.html">get_direct_beam_mask</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.Diffraction2D.get_direct_beam_position.html">get_direct_beam_position</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.Diffraction2D.get_variance.html">get_variance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.Diffraction2D.intensity_peaks.html">intensity_peaks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.Diffraction2D.make_probe_navigation.html">make_probe_navigation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.Diffraction2D.peak_position_refinement_com.html">peak_position_refinement_com</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.Diffraction2D.plot.html">plot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.Diffraction2D.rotate_diffraction.html">rotate_diffraction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.Diffraction2D.shift_diffraction.html">shift_diffraction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.Diffraction2D.subtract_diffraction_background.html">subtract_diffraction_background</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.Diffraction2D.template_match.html">template_match</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.Diffraction2D.template_match_disk.html">template_match_disk</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.Diffraction2D.template_match_ring.html">template_match_ring</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.Diffraction2D.template_match_with_binary_image.html">template_match_with_binary_image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.Diffraction2D.threshold_and_mask.html">threshold_and_mask</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/generated/pyxem.signals.ElectronDiffraction1D.html">ElectronDiffraction1D</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.ElectronDiffraction1D.curve_fit.html">curve_fit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.ElectronDiffraction1D.model2camera_length.html">model2camera_length</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.ElectronDiffraction1D.model2theta_scale.html">model2theta_scale</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.ElectronDiffraction1D.model_simulation1d.html">model_simulation1d</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.ElectronDiffraction1D.set_diffraction_calibration.html">set_diffraction_calibration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.ElectronDiffraction1D.set_experimental_parameters.html">set_experimental_parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.ElectronDiffraction1D.set_scan_calibration.html">set_scan_calibration</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.signals.LazyElectronDiffraction1D.html">LazyElectronDiffraction1D</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.signals.LazyElectronDiffraction2D.html">LazyElectronDiffraction2D</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/generated/pyxem.signals.ElectronDiffraction2D.html">ElectronDiffraction2D</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.ElectronDiffraction2D.beam_energy.html">beam_energy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.ElectronDiffraction2D.camera_length.html">camera_length</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.ElectronDiffraction2D.diffraction_calibration.html">diffraction_calibration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.ElectronDiffraction2D.scan_calibration.html">scan_calibration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.ElectronDiffraction2D.set_diffraction_calibration.html">set_diffraction_calibration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.ElectronDiffraction2D.set_experimental_parameters.html">set_experimental_parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.ElectronDiffraction2D.set_scan_calibration.html">set_scan_calibration</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/generated/pyxem.signals.VectorMatchingResults.html">VectorMatchingResults</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.VectorMatchingResults.get_crystallographic_map.html">get_crystallographic_map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.VectorMatchingResults.get_indexed_diffraction_vectors.html">get_indexed_diffraction_vectors</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/generated/pyxem.signals.PairDistributionFunction1D.html">PairDistributionFunction1D</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.PairDistributionFunction1D.normalise_signal.html">normalise_signal</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/generated/pyxem.signals.PolarDiffraction2D.html">PolarDiffraction2D</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.PolarDiffraction2D.get_angular_correlation.html">get_angular_correlation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.PolarDiffraction2D.get_angular_power.html">get_angular_power</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.PolarDiffraction2D.get_full_pearson_correlation.html">get_full_pearson_correlation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.PolarDiffraction2D.get_orientation.html">get_orientation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.PolarDiffraction2D.get_pearson_correlation.html">get_pearson_correlation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.PolarDiffraction2D.get_resolved_pearson_correlation.html">get_resolved_pearson_correlation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.PolarDiffraction2D.subtract_diffraction_background.html">subtract_diffraction_background</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.signals.LazyPolarDiffraction2D.html">LazyPolarDiffraction2D</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/generated/pyxem.signals.PolarVectors.html">PolarVectors</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.PolarVectors.has_delta_phi.html">has_delta_phi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.PolarVectors.get_angles.html">get_angles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.PolarVectors.to_cartesian.html">to_cartesian</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.PolarVectors.to_markers.html">to_markers</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.signals.LazyPolarVectors.html">LazyPolarVectors</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/generated/pyxem.signals.Power2D.html">Power2D</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.Power2D.get_map.html">get_map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.Power2D.plot_symmetries.html">plot_symmetries</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.signals.LazyPower2D.html">LazyPower2D</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/generated/pyxem.signals.ReducedIntensity1D.html">ReducedIntensity1D</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.ReducedIntensity1D.damp_exponential.html">damp_exponential</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.ReducedIntensity1D.damp_extrapolate_to_zero.html">damp_extrapolate_to_zero</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.ReducedIntensity1D.damp_lorch.html">damp_lorch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.ReducedIntensity1D.damp_low_q_region_erfc.html">damp_low_q_region_erfc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.ReducedIntensity1D.damp_updated_lorch.html">damp_updated_lorch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.ReducedIntensity1D.fit_thermal_multiple_scattering_correction.html">fit_thermal_multiple_scattering_correction</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/generated/pyxem.signals.LearningSegment.html">LearningSegment</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.LearningSegment.correlate_learning_segments.html">correlate_learning_segments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.LearningSegment.get_ncc_matrix.html">get_ncc_matrix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.LearningSegment.separate_learning_segments.html">separate_learning_segments</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/generated/pyxem.signals.VDFSegment.html">VDFSegment</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.VDFSegment.correlate_vdf_segments.html">correlate_vdf_segments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.VDFSegment.get_ncc_matrix.html">get_ncc_matrix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.VDFSegment.get_virtual_electron_diffraction.html">get_virtual_electron_diffraction</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/generated/pyxem.signals.StrainMap.html">StrainMap</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.StrainMap.plot.html">plot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.StrainMap.rotate_strain_basis.html">rotate_strain_basis</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/generated/pyxem.signals.Correlation1D.html">Correlation1D</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.Correlation1D.get_symmetry_coefficient.html">get_symmetry_coefficient</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.signals.LazyCorrelation1D.html">LazyCorrelation1D</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/generated/pyxem.signals.DisplacementGradientMap.html">DisplacementGradientMap</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.DisplacementGradientMap.get_strain_maps.html">get_strain_maps</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.DisplacementGradientMap.polar_decomposition.html">polar_decomposition</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/generated/pyxem.signals.VirtualDarkFieldImage.html">VirtualDarkFieldImage</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.VirtualDarkFieldImage.vectors.html">vectors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.VirtualDarkFieldImage.get_vdf_segments.html">get_vdf_segments</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/generated/pyxem.signals.InSituDiffraction2D.html">InSituDiffraction2D</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.InSituDiffraction2D.correct_real_space_drift.html">correct_real_space_drift</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.InSituDiffraction2D.correct_real_space_drift_fast.html">correct_real_space_drift_fast</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.InSituDiffraction2D.get_drift_vectors.html">get_drift_vectors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.InSituDiffraction2D.get_g2_2d_kresolved.html">get_g2_2d_kresolved</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.InSituDiffraction2D.get_time_series.html">get_time_series</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.InSituDiffraction2D.roll_time_axis.html">roll_time_axis</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/generated/pyxem.signals.LabeledDiffractionVectors2D.html">LabeledDiffractionVectors2D</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.LabeledDiffractionVectors2D.is_clustered.html">is_clustered</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.LabeledDiffractionVectors2D.cluster_labeled_vectors.html">cluster_labeled_vectors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.LabeledDiffractionVectors2D.map_vectors.html">map_vectors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.LabeledDiffractionVectors2D.plot_clustered.html">plot_clustered</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.LabeledDiffractionVectors2D.to_markers.html">to_markers</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/generated/pyxem.signals.OrientationMap.html">OrientationMap</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.OrientationMap.num_rows.html">num_rows</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.OrientationMap.simulation.html">simulation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.OrientationMap.deepcopy.html">deepcopy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.OrientationMap.get_simulation_arrays.html">get_simulation_arrays</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.OrientationMap.plot_over_signal.html">plot_over_signal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.OrientationMap.to_crystal_map.html">to_crystal_map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.OrientationMap.to_ipf_colormap.html">to_ipf_colormap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.OrientationMap.to_ipf_correlation_heatmap_markers.html">to_ipf_correlation_heatmap_markers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.OrientationMap.to_ipf_markers.html">to_ipf_markers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.OrientationMap.to_markers.html">to_markers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.OrientationMap.to_phase_index.html">to_phase_index</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.OrientationMap.to_phase_map.html">to_phase_map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.OrientationMap.to_polar_markers.html">to_polar_markers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.OrientationMap.to_rotation.html">to_rotation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.OrientationMap.to_single_phase_orientations.html">to_single_phase_orientations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.OrientationMap.to_single_phase_polar_markers.html">to_single_phase_polar_markers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.OrientationMap.to_single_phase_vectors.html">to_single_phase_vectors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.signals.OrientationMap.to_vectors.html">to_vectors</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../reference/generated/pyxem.utils.html">utils</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/generated/pyxem.utils.plotting.html">plotting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.plotting.plot_template_over_pattern.html">plot_template_over_pattern</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/generated/pyxem.utils.ransac_ellipse_tools.html">ransac_ellipse_tools</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.ransac_ellipse_tools.is_ellipse_good.html">is_ellipse_good</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.ransac_ellipse_tools.make_ellipse_data_points.html">make_ellipse_data_points</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.ransac_ellipse_tools.ellipse_to_markers.html">ellipse_to_markers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.ransac_ellipse_tools.get_ellipse_model_ransac.html">get_ellipse_model_ransac</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.ransac_ellipse_tools.get_ellipse_model_ransac_single_frame.html">get_ellipse_model_ransac_single_frame</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.ransac_ellipse_tools.determine_ellipse.html">determine_ellipse</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/generated/pyxem.utils.vectors.html">vectors</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.vectors.detector_to_fourier.html">detector_to_fourier</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.vectors.calculate_norms.html">calculate_norms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.vectors.calculate_norms_ragged.html">calculate_norms_ragged</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.vectors.filter_vectors_ragged.html">filter_vectors_ragged</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.vectors.filter_vectors_edge_ragged.html">filter_vectors_edge_ragged</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.vectors.normalize_or_zero.html">normalize_or_zero</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.vectors.get_rotation_matrix_between_vectors.html">get_rotation_matrix_between_vectors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.vectors.get_npeaks.html">get_npeaks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.vectors.get_angle_cartesian_vec.html">get_angle_cartesian_vec</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.vectors.get_angle_cartesian.html">get_angle_cartesian</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.vectors.filter_vectors_near_basis.html">filter_vectors_near_basis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.vectors.vectors_to_polar.html">vectors_to_polar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.vectors.to_cart_three_angles.html">to_cart_three_angles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.vectors.polar_to_cartesian.html">polar_to_cartesian</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.vectors.get_vectors_mesh.html">get_vectors_mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.vectors.get_angles.html">get_angles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.vectors.get_filtered_combinations.html">get_filtered_combinations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.vectors.convert_to_markers.html">convert_to_markers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.vectors.points_to_polygon.html">points_to_polygon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.vectors.points_to_poly_collection.html">points_to_poly_collection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.vectors.column_mean.html">column_mean</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.vectors.vectors2image.html">vectors2image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.vectors.get_three_angles.html">get_three_angles</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/generated/pyxem.utils.diffraction.html">diffraction</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.diffraction.apply_transformation.html">apply_transformation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.diffraction.center_of_mass_from_image.html">center_of_mass_from_image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.diffraction.circular_mask.html">circular_mask</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.diffraction.convert_affine_to_transform.html">convert_affine_to_transform</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.diffraction.find_beam_center_blur.html">find_beam_center_blur</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.diffraction.find_beam_center_interpolate.html">find_beam_center_interpolate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.diffraction.find_beam_offset_cross_correlation.html">find_beam_offset_cross_correlation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.diffraction.find_center_of_mass.html">find_center_of_mass</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.diffraction.find_hot_pixels.html">find_hot_pixels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.diffraction.gain_normalise.html">gain_normalise</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.diffraction.investigate_dog_background_removal_interactive.html">investigate_dog_background_removal_interactive</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.diffraction.match_template_dilate.html">match_template_dilate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.diffraction.normalize_template_match.html">normalize_template_match</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.diffraction.peaks_as_gvectors.html">peaks_as_gvectors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.diffraction.reference_circle.html">reference_circle</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.diffraction.regional_filter.html">regional_filter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.diffraction.remove_bad_pixels.html">remove_bad_pixels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.diffraction.remove_dead.html">remove_dead</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/generated/pyxem.utils.calibration.html">calibration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.calibration.find_diffraction_calibration.html">find_diffraction_calibration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.calibration.value2node.html">value2node</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.calibration.value2standard_units.html">value2standard_units</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/generated/pyxem.utils.calibration.Calibration.html">Calibration</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.utils.find_diffraction_calibration.html">find_diffraction_calibration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.utils.plot_template_over_pattern.html">plot_template_over_pattern</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/generated/pyxem.utils.determine_ellipse.html">determine_ellipse</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user_guide/bibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user_guide/cite.html">Citing pyxem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user_guide/open_datasets_workflows.html">Open datasets and workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user_guide/related_projects.html">Related projects</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/pyxem/pyxem/blob/main/LICENSE">License</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../user_guide/index.html" class="nav-link">Where do I start?</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Gallery of Tutorials</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Phase Contrast</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Analysing Magnetic Materials using STEM-DPC</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-tutorials-phase-contrast-analysis-of-magnetic-sample-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
+</div>
+<section class="sphx-glr-example-title" id="analysing-magnetic-materials-using-stem-dpc">
+<span id="sphx-glr-tutorials-phase-contrast-analysis-of-magnetic-sample-py"></span><h1>Analysing Magnetic Materials using STEM-DPC<a class="headerlink" href="#analysing-magnetic-materials-using-stem-dpc" title="Link to this heading">#</a></h1>
+<p>This tutorial shows how to use pyxem to analyse 4D-STEM data from
+magnetic materials using differential phase contrast (DPC). For more
+information about this imaging method, see the Wikipedia article on
+<a class="reference external" href="https://en.wikipedia.org/wiki/Scanning_transmission_electron_microscopy#Differential_phase_contrast">Scanning Transmission Electron Microscopy</a>,
+which has a subsection on DPC.</p>
+<p>The data is from the paper <strong>Strain Anisotropy and Magnetic Domains in
+Embedded Nanomagnets</strong>, recorded on a Merlin fast pixelated detector with
+the objective lens turned off. This allows magnetic information to be
+extracted by carefully mapping the beam shifts.</p>
+<p>More documentation about pyxem is found at <a class="reference external" href="https://pyxem.readthedocs.io/">https://pyxem.readthedocs.io/</a></p>
+<p>Journal article:</p>
+<ul class="simple">
+<li><p><strong>Strain Anisotropy and Magnetic Domains in Embedded Nanomagnets</strong></p></li>
+<li><p>Nord, M., Semisalova, A., Kákay, A., Hlawacek, G., MacLaren, I., Liersch, V., Volkov, O. M., Makarov, D., Paterson, G. W., Potzger, K., Lindner, J., Fassbender, J., McGrouther, D., Bali, R.</p></li>
+<li><p>Small 2019, 15, 1904738. <a class="reference external" href="https://doi.org/10.1002/smll.201904738">https://doi.org/10.1002/smll.201904738</a></p></li>
+</ul>
+<p>The full dataset and scripts are available at Zenodo: <a class="reference external" href="https://zenodo.org/record/3466591">https://zenodo.org/record/3466591</a></p>
+<p>This tutorial uses a cropped version of the data containing only the
+information about the zero beam.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">hyperspy.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">hs</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pyxem</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pxm</span>
+
+<span class="c1"># Load the data</span>
+<span class="c1"># The data is available at https://zenodo.org/record/3466591</span>
+<span class="c1"># Or using pyxem&#39;s data module</span>
+
+<a href="../../reference/generated/pyxem.signals.LazyElectronDiffraction2D.html#pyxem.signals.LazyElectronDiffraction2D" title="pyxem.signals.LazyElectronDiffraction2D" class="sphx-glr-backref-module-pyxem-signals sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">s</span></a> <span class="o">=</span> <a href="../../reference/generated/pyxem.data.feal_stripes.html#pyxem.data.feal_stripes" title="pyxem.data.feal_stripes" class="sphx-glr-backref-module-pyxem-data sphx-glr-backref-type-py-function"><span class="n">pxm</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">feal_stripes</span></a><span class="p">(</span><span class="n">allow_download</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">lazy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># lazy loading using dask</span>
+
+<a href="../../reference/generated/pyxem.signals.LazyElectronDiffraction2D.html#pyxem.signals.LazyElectronDiffraction2D" title="pyxem.signals.LazyElectronDiffraction2D" class="sphx-glr-backref-module-pyxem-signals sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">s</span></a>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  0%|                                               | 0.00/382M [00:00&lt;?, ?B/s]
+  0%|                                    | 4.10k/382M [00:00&lt;3:29:37, 30.4kB/s]
+  0%|                                       | 32.8k/382M [00:00&lt;57:49, 110kB/s]
+  0%|                                        | 172k/382M [00:00&lt;15:30, 410kB/s]
+  0%|                                        | 287k/382M [00:00&lt;13:03, 487kB/s]
+  0%|                                        | 471k/382M [00:00&lt;07:54, 805kB/s]
+  0%|                                        | 684k/382M [00:01&lt;06:53, 923kB/s]
+  0%|                                        | 881k/382M [00:01&lt;06:39, 955kB/s]
+  0%|                                      | 1.09M/382M [00:01&lt;06:19, 1.01MB/s]
+  0%|▏                                     | 1.35M/382M [00:01&lt;05:42, 1.11MB/s]
+  0%|▏                                     | 1.63M/382M [00:01&lt;05:12, 1.22MB/s]
+  0%|▏                                     | 1.88M/382M [00:01&lt;05:08, 1.23MB/s]
+  1%|▏                                     | 2.25M/382M [00:02&lt;04:20, 1.46MB/s]
+  1%|▎                                     | 2.79M/382M [00:02&lt;03:22, 1.87MB/s]
+  1%|▎                                     | 3.41M/382M [00:02&lt;02:46, 2.28MB/s]
+  1%|▍                                     | 4.23M/382M [00:02&lt;01:52, 3.36MB/s]
+  1%|▌                                     | 5.30M/382M [00:02&lt;01:31, 4.13MB/s]
+  2%|▋                                     | 7.02M/382M [00:02&lt;00:55, 6.77MB/s]
+  2%|▉                                     | 9.03M/382M [00:03&lt;00:45, 8.14MB/s]
+  3%|█▏                                    | 11.5M/382M [00:03&lt;00:31, 11.7MB/s]
+  4%|█▍                                    | 14.2M/382M [00:03&lt;00:24, 15.3MB/s]
+  4%|█▋                                    | 16.9M/382M [00:03&lt;00:20, 18.0MB/s]
+  5%|█▉                                    | 18.9M/382M [00:03&lt;00:29, 12.5MB/s]
+  5%|██                                    | 20.6M/382M [00:03&lt;00:32, 11.2MB/s]
+  6%|██▏                                   | 22.0M/382M [00:04&lt;00:36, 9.93MB/s]
+  6%|██▎                                   | 23.2M/382M [00:04&lt;00:43, 8.25MB/s]
+  6%|██▍                                   | 24.2M/382M [00:04&lt;00:48, 7.31MB/s]
+  7%|██▍                                   | 25.0M/382M [00:04&lt;00:48, 7.42MB/s]
+  7%|██▌                                   | 25.8M/382M [00:04&lt;00:55, 6.40MB/s]
+  7%|██▋                                   | 26.9M/382M [00:04&lt;00:49, 7.21MB/s]
+  7%|██▊                                   | 27.7M/382M [00:05&lt;00:55, 6.38MB/s]
+  8%|███                                   | 31.0M/382M [00:05&lt;00:29, 11.8MB/s]
+  9%|███▍                                  | 35.0M/382M [00:05&lt;00:18, 18.3MB/s]
+ 10%|███▉                                  | 39.1M/382M [00:05&lt;00:14, 23.7MB/s]
+ 11%|████▎                                 | 43.2M/382M [00:05&lt;00:12, 28.0MB/s]
+ 12%|████▋                                 | 47.3M/382M [00:05&lt;00:10, 31.0MB/s]
+ 13%|█████                                 | 51.4M/382M [00:05&lt;00:10, 32.7MB/s]
+ 14%|█████▍                                | 54.8M/382M [00:05&lt;00:09, 33.0MB/s]
+ 15%|█████▊                                | 58.5M/382M [00:05&lt;00:09, 34.0MB/s]
+ 16%|██████▏                               | 62.3M/382M [00:06&lt;00:09, 34.7MB/s]
+ 17%|██████▌                               | 66.3M/382M [00:06&lt;00:08, 36.1MB/s]
+ 18%|██████▉                               | 70.0M/382M [00:07&lt;00:28, 11.0MB/s]
+ 19%|███████▏                              | 72.6M/382M [00:07&lt;00:37, 8.19MB/s]
+ 20%|███████▍                              | 74.7M/382M [00:08&lt;00:44, 6.84MB/s]
+ 20%|███████▌                              | 76.2M/382M [00:08&lt;00:47, 6.50MB/s]
+ 20%|███████▋                              | 77.4M/382M [00:08&lt;00:51, 5.96MB/s]
+ 21%|███████▊                              | 78.4M/382M [00:08&lt;00:52, 5.80MB/s]
+ 21%|███████▉                              | 79.3M/382M [00:09&lt;00:54, 5.51MB/s]
+ 21%|███████▉                              | 80.0M/382M [00:09&lt;00:58, 5.19MB/s]
+ 21%|████████                              | 80.6M/382M [00:09&lt;00:57, 5.28MB/s]
+ 21%|████████                              | 81.2M/382M [00:09&lt;01:02, 4.78MB/s]
+ 21%|████████▏                             | 81.8M/382M [00:09&lt;01:03, 4.73MB/s]
+ 22%|████████▏                             | 82.3M/382M [00:09&lt;01:02, 4.76MB/s]
+ 22%|████████▏                             | 82.8M/382M [00:09&lt;01:13, 4.06MB/s]
+ 22%|████████▎                             | 83.5M/382M [00:10&lt;01:16, 3.89MB/s]
+ 22%|████████▎                             | 83.9M/382M [00:10&lt;01:17, 3.85MB/s]
+ 22%|████████▍                             | 84.9M/382M [00:10&lt;01:10, 4.24MB/s]
+ 22%|████████▌                             | 85.8M/382M [00:10&lt;01:07, 4.40MB/s]
+ 23%|████████▌                             | 86.5M/382M [00:10&lt;01:00, 4.90MB/s]
+ 23%|████████▋                             | 87.2M/382M [00:10&lt;01:05, 4.48MB/s]
+ 23%|████████▋                             | 87.9M/382M [00:11&lt;01:00, 4.90MB/s]
+ 23%|████████▊                             | 88.6M/382M [00:11&lt;01:05, 4.45MB/s]
+ 23%|████████▉                             | 89.3M/382M [00:11&lt;00:59, 4.91MB/s]
+ 24%|████████▉                             | 89.9M/382M [00:11&lt;01:05, 4.46MB/s]
+ 24%|█████████                             | 90.6M/382M [00:11&lt;00:59, 4.93MB/s]
+ 24%|█████████                             | 91.3M/382M [00:11&lt;01:06, 4.39MB/s]
+ 24%|█████████▏                            | 92.0M/382M [00:11&lt;00:58, 4.93MB/s]
+ 24%|█████████▏                            | 92.5M/382M [00:12&lt;00:57, 5.04MB/s]
+ 24%|█████████▎                            | 93.1M/382M [00:12&lt;01:07, 4.26MB/s]
+ 25%|█████████▎                            | 94.0M/382M [00:12&lt;01:05, 4.41MB/s]
+ 25%|█████████▍                            | 94.7M/382M [00:12&lt;00:57, 5.02MB/s]
+ 25%|█████████▍                            | 95.3M/382M [00:12&lt;00:56, 5.05MB/s]
+ 25%|█████████▌                            | 95.8M/382M [00:12&lt;01:10, 4.08MB/s]
+ 25%|█████████▌                            | 96.4M/382M [00:12&lt;01:04, 4.43MB/s]
+ 25%|█████████▋                            | 97.0M/382M [00:13&lt;01:10, 4.04MB/s]
+ 26%|█████████▋                            | 97.8M/382M [00:13&lt;01:11, 3.99MB/s]
+ 26%|█████████▊                            | 98.7M/382M [00:13&lt;01:07, 4.21MB/s]
+ 26%|█████████▉                            | 99.6M/382M [00:13&lt;01:05, 4.33MB/s]
+ 26%|██████████▎                            | 100M/382M [00:13&lt;01:03, 4.45MB/s]
+ 27%|██████████▎                            | 101M/382M [00:14&lt;01:01, 4.57MB/s]
+ 27%|██████████▍                            | 102M/382M [00:14&lt;00:56, 4.98MB/s]
+ 27%|██████████▍                            | 103M/382M [00:14&lt;00:55, 5.04MB/s]
+ 27%|██████████▌                            | 103M/382M [00:14&lt;01:05, 4.28MB/s]
+ 27%|██████████▌                            | 104M/382M [00:14&lt;00:57, 4.84MB/s]
+ 27%|██████████▋                            | 105M/382M [00:14&lt;01:03, 4.35MB/s]
+ 27%|██████████▋                            | 105M/382M [00:14&lt;01:04, 4.27MB/s]
+ 28%|██████████▊                            | 106M/382M [00:14&lt;01:03, 4.38MB/s]
+ 28%|██████████▊                            | 106M/382M [00:15&lt;01:09, 3.99MB/s]
+ 28%|██████████▉                            | 107M/382M [00:15&lt;01:01, 4.47MB/s]
+ 28%|██████████▉                            | 107M/382M [00:15&lt;01:04, 4.24MB/s]
+ 28%|███████████                            | 108M/382M [00:15&lt;00:58, 4.71MB/s]
+ 28%|███████████                            | 109M/382M [00:15&lt;01:04, 4.21MB/s]
+ 29%|███████████▏                           | 110M/382M [00:15&lt;01:06, 4.09MB/s]
+ 29%|███████████▎                           | 110M/382M [00:16&lt;01:06, 4.11MB/s]
+ 29%|███████████▎                           | 111M/382M [00:16&lt;01:02, 4.35MB/s]
+ 29%|███████████▍                           | 112M/382M [00:16&lt;01:00, 4.47MB/s]
+ 30%|███████████▌                           | 113M/382M [00:16&lt;01:02, 4.32MB/s]
+ 30%|███████████▌                           | 114M/382M [00:16&lt;01:00, 4.44MB/s]
+ 30%|███████████▋                           | 115M/382M [00:17&lt;01:01, 4.35MB/s]
+ 30%|███████████▊                           | 115M/382M [00:17&lt;01:51, 2.39MB/s]
+ 30%|███████████▊                           | 116M/382M [00:17&lt;01:27, 3.05MB/s]
+ 30%|███████████▉                           | 117M/382M [00:17&lt;01:29, 2.97MB/s]
+ 31%|███████████▉                           | 117M/382M [00:18&lt;01:22, 3.22MB/s]
+ 31%|████████████                           | 118M/382M [00:18&lt;01:10, 3.73MB/s]
+ 31%|████████████                           | 119M/382M [00:18&lt;01:00, 4.32MB/s]
+ 31%|████████████▏                          | 119M/382M [00:18&lt;01:05, 4.04MB/s]
+ 31%|████████████▏                          | 120M/382M [00:18&lt;00:56, 4.64MB/s]
+ 32%|████████████▎                          | 121M/382M [00:18&lt;01:02, 4.21MB/s]
+ 32%|████████████▍                          | 121M/382M [00:19&lt;01:05, 4.01MB/s]
+ 32%|████████████▍                          | 122M/382M [00:19&lt;01:02, 4.16MB/s]
+ 32%|████████████▌                          | 122M/382M [00:19&lt;01:06, 3.89MB/s]
+ 32%|████████████▌                          | 123M/382M [00:19&lt;00:58, 4.42MB/s]
+ 32%|████████████▋                          | 124M/382M [00:19&lt;01:05, 3.94MB/s]
+ 32%|████████████▋                          | 124M/382M [00:19&lt;01:05, 3.96MB/s]
+ 33%|████████████▋                          | 125M/382M [00:19&lt;01:09, 3.68MB/s]
+ 33%|████████████▊                          | 126M/382M [00:20&lt;00:55, 4.63MB/s]
+ 33%|████████████▉                          | 126M/382M [00:20&lt;01:03, 4.06MB/s]
+ 33%|████████████▉                          | 127M/382M [00:20&lt;00:59, 4.31MB/s]
+ 33%|█████████████                          | 128M/382M [00:20&lt;00:55, 4.63MB/s]
+ 34%|█████████████                          | 128M/382M [00:20&lt;00:58, 4.37MB/s]
+ 34%|█████████████▏                         | 129M/382M [00:20&lt;00:59, 4.27MB/s]
+ 34%|█████████████▎                         | 130M/382M [00:21&lt;00:56, 4.45MB/s]
+ 34%|█████████████▍                         | 131M/382M [00:21&lt;00:55, 4.51MB/s]
+ 35%|█████████████▍                         | 132M/382M [00:21&lt;00:55, 4.48MB/s]
+ 35%|█████████████▌                         | 132M/382M [00:21&lt;00:56, 4.38MB/s]
+ 35%|█████████████▌                         | 133M/382M [00:21&lt;00:53, 4.62MB/s]
+ 35%|█████████████▌                         | 133M/382M [00:21&lt;00:57, 4.35MB/s]
+ 35%|█████████████▋                         | 134M/382M [00:22&lt;01:06, 3.75MB/s]
+ 35%|█████████████▋                         | 135M/382M [00:22&lt;00:56, 4.40MB/s]
+ 35%|█████████████▊                         | 135M/382M [00:22&lt;01:00, 4.09MB/s]
+ 36%|█████████████▊                         | 136M/382M [00:22&lt;00:54, 4.55MB/s]
+ 36%|█████████████▉                         | 136M/382M [00:22&lt;00:53, 4.62MB/s]
+ 36%|█████████████▉                         | 137M/382M [00:22&lt;01:01, 4.01MB/s]
+ 36%|██████████████                         | 138M/382M [00:22&lt;00:51, 4.71MB/s]
+ 36%|██████████████                         | 138M/382M [00:23&lt;00:58, 4.14MB/s]
+ 36%|██████████████▏                        | 139M/382M [00:23&lt;00:50, 4.84MB/s]
+ 37%|██████████████▏                        | 140M/382M [00:23&lt;00:59, 4.07MB/s]
+ 37%|██████████████▎                        | 141M/382M [00:23&lt;00:56, 4.28MB/s]
+ 37%|██████████████▍                        | 141M/382M [00:23&lt;00:54, 4.40MB/s]
+ 37%|██████████████▌                        | 142M/382M [00:23&lt;00:52, 4.53MB/s]
+ 37%|██████████████▌                        | 143M/382M [00:24&lt;00:51, 4.62MB/s]
+ 38%|██████████████▋                        | 144M/382M [00:24&lt;00:47, 5.03MB/s]
+ 38%|██████████████▊                        | 145M/382M [00:24&lt;00:52, 4.52MB/s]
+ 38%|██████████████▊                        | 145M/382M [00:24&lt;00:52, 4.52MB/s]
+ 38%|██████████████▊                        | 146M/382M [00:24&lt;00:51, 4.60MB/s]
+ 38%|██████████████▉                        | 146M/382M [00:24&lt;01:01, 3.84MB/s]
+ 38%|██████████████▉                        | 147M/382M [00:24&lt;00:57, 4.12MB/s]
+ 39%|███████████████                        | 148M/382M [00:25&lt;00:56, 4.17MB/s]
+ 39%|███████████████▏                       | 148M/382M [00:25&lt;00:54, 4.32MB/s]
+ 39%|███████████████▏                       | 149M/382M [00:25&lt;00:55, 4.17MB/s]
+ 39%|███████████████▎                       | 150M/382M [00:25&lt;00:57, 4.06MB/s]
+ 39%|███████████████▍                       | 151M/382M [00:25&lt;00:53, 4.33MB/s]
+ 40%|███████████████▍                       | 152M/382M [00:26&lt;00:52, 4.38MB/s]
+ 40%|███████████████▌                       | 153M/382M [00:26&lt;00:50, 4.54MB/s]
+ 40%|███████████████▋                       | 153M/382M [00:26&lt;00:45, 5.00MB/s]
+ 40%|███████████████▋                       | 154M/382M [00:26&lt;00:52, 4.38MB/s]
+ 40%|███████████████▊                       | 155M/382M [00:26&lt;00:53, 4.22MB/s]
+ 41%|███████████████▊                       | 156M/382M [00:26&lt;00:51, 4.41MB/s]
+ 41%|███████████████▉                       | 156M/382M [00:27&lt;00:51, 4.40MB/s]
+ 41%|████████████████                       | 157M/382M [00:27&lt;00:49, 4.53MB/s]
+ 41%|████████████████▏                      | 158M/382M [00:27&lt;00:48, 4.59MB/s]
+ 42%|████████████████▏                      | 159M/382M [00:27&lt;00:47, 4.67MB/s]
+ 42%|████████████████▎                      | 160M/382M [00:27&lt;00:42, 5.24MB/s]
+ 42%|████████████████▍                      | 161M/382M [00:27&lt;00:43, 5.06MB/s]
+ 42%|████████████████▍                      | 161M/382M [00:28&lt;00:50, 4.37MB/s]
+ 42%|████████████████▍                      | 162M/382M [00:28&lt;00:48, 4.54MB/s]
+ 42%|████████████████▌                      | 162M/382M [00:28&lt;00:54, 4.06MB/s]
+ 43%|████████████████▋                      | 163M/382M [00:28&lt;00:43, 5.06MB/s]
+ 43%|████████████████▋                      | 164M/382M [00:28&lt;00:50, 4.30MB/s]
+ 43%|████████████████▊                      | 164M/382M [00:28&lt;00:44, 4.94MB/s]
+ 43%|████████████████▊                      | 165M/382M [00:28&lt;00:51, 4.19MB/s]
+ 43%|████████████████▉                      | 166M/382M [00:29&lt;00:50, 4.28MB/s]
+ 44%|█████████████████                      | 167M/382M [00:29&lt;00:43, 4.97MB/s]
+ 44%|█████████████████                      | 167M/382M [00:29&lt;00:49, 4.35MB/s]
+ 44%|█████████████████▏                     | 168M/382M [00:29&lt;00:47, 4.50MB/s]
+ 44%|█████████████████▎                     | 169M/382M [00:29&lt;00:47, 4.52MB/s]
+ 44%|█████████████████▎                     | 170M/382M [00:30&lt;00:45, 4.66MB/s]
+ 45%|█████████████████▍                     | 171M/382M [00:30&lt;00:45, 4.69MB/s]
+ 45%|█████████████████▌                     | 172M/382M [00:30&lt;00:46, 4.51MB/s]
+ 45%|█████████████████▌                     | 173M/382M [00:30&lt;00:47, 4.43MB/s]
+ 45%|█████████████████▋                     | 173M/382M [00:30&lt;00:46, 4.45MB/s]
+ 46%|█████████████████▊                     | 174M/382M [00:31&lt;00:45, 4.56MB/s]
+ 46%|█████████████████▉                     | 175M/382M [00:31&lt;00:46, 4.48MB/s]
+ 46%|█████████████████▉                     | 176M/382M [00:31&lt;01:15, 2.72MB/s]
+ 46%|█████████████████▉                     | 176M/382M [00:31&lt;01:09, 2.96MB/s]
+ 46%|██████████████████                     | 177M/382M [00:31&lt;00:57, 3.57MB/s]
+ 47%|██████████████████▏                    | 178M/382M [00:32&lt;00:58, 3.52MB/s]
+ 47%|██████████████████▏                    | 179M/382M [00:32&lt;00:55, 3.70MB/s]
+ 47%|██████████████████▎                    | 179M/382M [00:32&lt;00:49, 4.05MB/s]
+ 47%|██████████████████▍                    | 180M/382M [00:32&lt;00:46, 4.30MB/s]
+ 47%|██████████████████▌                    | 181M/382M [00:32&lt;00:39, 5.12MB/s]
+ 48%|██████████████████▌                    | 182M/382M [00:33&lt;00:45, 4.45MB/s]
+ 48%|██████████████████▋                    | 183M/382M [00:33&lt;00:47, 4.17MB/s]
+ 48%|██████████████████▋                    | 184M/382M [00:33&lt;00:44, 4.43MB/s]
+ 48%|██████████████████▊                    | 184M/382M [00:33&lt;00:45, 4.31MB/s]
+ 48%|██████████████████▉                    | 185M/382M [00:33&lt;00:41, 4.75MB/s]
+ 49%|██████████████████▉                    | 186M/382M [00:33&lt;00:45, 4.29MB/s]
+ 49%|███████████████████                    | 186M/382M [00:33&lt;00:40, 4.84MB/s]
+ 49%|███████████████████                    | 187M/382M [00:34&lt;00:43, 4.51MB/s]
+ 49%|███████████████████                    | 187M/382M [00:34&lt;00:47, 4.06MB/s]
+ 49%|███████████████████▏                   | 188M/382M [00:34&lt;00:47, 4.06MB/s]
+ 49%|███████████████████▏                   | 189M/382M [00:34&lt;00:48, 3.97MB/s]
+ 50%|███████████████████▍                   | 191M/382M [00:34&lt;00:25, 7.44MB/s]
+ 51%|███████████████████▊                   | 195M/382M [00:34&lt;00:13, 14.4MB/s]
+ 52%|████████████████████▎                  | 199M/382M [00:34&lt;00:08, 20.8MB/s]
+ 53%|████████████████████▋                  | 202M/382M [00:35&lt;00:07, 24.7MB/s]
+ 54%|████████████████████▉                  | 206M/382M [00:35&lt;00:06, 27.0MB/s]
+ 55%|█████████████████████▍                 | 210M/382M [00:35&lt;00:05, 31.3MB/s]
+ 56%|█████████████████████▊                 | 213M/382M [00:35&lt;00:05, 32.0MB/s]
+ 57%|██████████████████████▏                | 217M/382M [00:35&lt;00:04, 34.0MB/s]
+ 58%|██████████████████████▌                | 221M/382M [00:35&lt;00:04, 34.9MB/s]
+ 59%|██████████████████████▉                | 225M/382M [00:35&lt;00:08, 18.2MB/s]
+ 60%|███████████████████████▏               | 228M/382M [00:36&lt;00:16, 9.59MB/s]
+ 60%|███████████████████████▍               | 230M/382M [00:37&lt;00:18, 8.14MB/s]
+ 61%|███████████████████████▊               | 233M/382M [00:37&lt;00:13, 10.9MB/s]
+ 62%|████████████████████████▏              | 237M/382M [00:37&lt;00:09, 14.8MB/s]
+ 63%|████████████████████████▌              | 241M/382M [00:37&lt;00:07, 18.6MB/s]
+ 64%|█████████████████████████              | 245M/382M [00:37&lt;00:06, 22.6MB/s]
+ 65%|█████████████████████████▍             | 249M/382M [00:37&lt;00:05, 24.6MB/s]
+ 66%|█████████████████████████▊             | 253M/382M [00:37&lt;00:04, 27.9MB/s]
+ 67%|██████████████████████████▏            | 256M/382M [00:37&lt;00:04, 29.8MB/s]
+ 68%|██████████████████████████▌            | 260M/382M [00:37&lt;00:03, 32.3MB/s]
+ 69%|██████████████████████████▉            | 264M/382M [00:38&lt;00:07, 15.8MB/s]
+ 70%|███████████████████████████▏           | 267M/382M [00:38&lt;00:11, 10.2MB/s]
+ 70%|███████████████████████████▍           | 269M/382M [00:39&lt;00:14, 7.94MB/s]
+ 71%|███████████████████████████▌           | 270M/382M [00:39&lt;00:15, 7.01MB/s]
+ 71%|███████████████████████████▋           | 272M/382M [00:40&lt;00:16, 6.57MB/s]
+ 71%|███████████████████████████▊           | 273M/382M [00:40&lt;00:18, 6.05MB/s]
+ 72%|███████████████████████████▉           | 273M/382M [00:40&lt;00:18, 5.98MB/s]
+ 72%|███████████████████████████▉           | 274M/382M [00:40&lt;00:19, 5.49MB/s]
+ 72%|████████████████████████████           | 275M/382M [00:40&lt;00:20, 5.32MB/s]
+ 72%|████████████████████████████▏          | 276M/382M [00:40&lt;00:20, 5.22MB/s]
+ 72%|████████████████████████████▏          | 276M/382M [00:41&lt;00:20, 5.12MB/s]
+ 72%|████████████████████████████▎          | 277M/382M [00:41&lt;00:21, 4.95MB/s]
+ 73%|████████████████████████████▎          | 278M/382M [00:41&lt;00:21, 4.94MB/s]
+ 73%|████████████████████████████▍          | 278M/382M [00:41&lt;00:24, 4.25MB/s]
+ 73%|████████████████████████████▍          | 279M/382M [00:41&lt;00:28, 3.70MB/s]
+ 73%|████████████████████████████▍          | 279M/382M [00:41&lt;00:27, 3.80MB/s]
+ 73%|████████████████████████████▌          | 279M/382M [00:41&lt;00:27, 3.76MB/s]
+ 73%|████████████████████████████▌          | 280M/382M [00:42&lt;00:25, 3.98MB/s]
+ 73%|████████████████████████████▋          | 281M/382M [00:42&lt;00:26, 3.87MB/s]
+ 74%|████████████████████████████▋          | 281M/382M [00:42&lt;00:22, 4.51MB/s]
+ 74%|████████████████████████████▊          | 282M/382M [00:42&lt;00:21, 4.64MB/s]
+ 74%|████████████████████████████▊          | 282M/382M [00:42&lt;00:25, 3.96MB/s]
+ 74%|████████████████████████████▉          | 283M/382M [00:42&lt;00:21, 4.60MB/s]
+ 74%|████████████████████████████▉          | 284M/382M [00:42&lt;00:22, 4.32MB/s]
+ 74%|█████████████████████████████          | 284M/382M [00:43&lt;00:20, 4.81MB/s]
+ 75%|█████████████████████████████          | 285M/382M [00:43&lt;00:21, 4.60MB/s]
+ 75%|█████████████████████████████▏         | 286M/382M [00:43&lt;00:20, 4.64MB/s]
+ 75%|█████████████████████████████▎         | 287M/382M [00:43&lt;00:20, 4.65MB/s]
+ 75%|█████████████████████████████▍         | 288M/382M [00:43&lt;00:19, 4.76MB/s]
+ 76%|█████████████████████████████▍         | 289M/382M [00:43&lt;00:19, 4.72MB/s]
+ 76%|█████████████████████████████▌         | 290M/382M [00:44&lt;00:19, 4.76MB/s]
+ 76%|█████████████████████████████▋         | 291M/382M [00:44&lt;00:19, 4.73MB/s]
+ 76%|█████████████████████████████▊         | 292M/382M [00:44&lt;00:18, 4.93MB/s]
+ 76%|█████████████████████████████▊         | 292M/382M [00:44&lt;00:19, 4.68MB/s]
+ 77%|█████████████████████████████▉         | 293M/382M [00:44&lt;00:18, 4.87MB/s]
+ 77%|█████████████████████████████▉         | 294M/382M [00:44&lt;00:19, 4.55MB/s]
+ 77%|██████████████████████████████         | 294M/382M [00:45&lt;00:18, 4.86MB/s]
+ 77%|██████████████████████████████         | 295M/382M [00:45&lt;00:16, 5.17MB/s]
+ 77%|██████████████████████████████▏        | 295M/382M [00:45&lt;00:19, 4.46MB/s]
+ 78%|██████████████████████████████▏        | 296M/382M [00:45&lt;00:18, 4.61MB/s]
+ 78%|██████████████████████████████▎        | 297M/382M [00:45&lt;00:15, 5.49MB/s]
+ 78%|██████████████████████████████▍        | 298M/382M [00:45&lt;00:18, 4.65MB/s]
+ 78%|██████████████████████████████▍        | 299M/382M [00:46&lt;00:18, 4.43MB/s]
+ 78%|██████████████████████████████▌        | 299M/382M [00:46&lt;00:19, 4.34MB/s]
+ 79%|██████████████████████████████▋        | 300M/382M [00:46&lt;00:18, 4.46MB/s]
+ 79%|██████████████████████████████▋        | 301M/382M [00:46&lt;00:16, 4.92MB/s]
+ 79%|██████████████████████████████▊        | 302M/382M [00:46&lt;00:19, 4.11MB/s]
+ 79%|██████████████████████████████▊        | 302M/382M [00:46&lt;00:18, 4.23MB/s]
+ 79%|██████████████████████████████▊        | 303M/382M [00:47&lt;00:21, 3.67MB/s]
+ 79%|██████████████████████████████▉        | 303M/382M [00:47&lt;00:22, 3.59MB/s]
+ 79%|██████████████████████████████▉        | 304M/382M [00:47&lt;00:18, 4.22MB/s]
+ 80%|███████████████████████████████        | 304M/382M [00:47&lt;00:19, 4.07MB/s]
+ 80%|███████████████████████████████        | 304M/382M [00:47&lt;00:18, 4.12MB/s]
+ 80%|███████████████████████████████        | 305M/382M [00:47&lt;00:18, 4.16MB/s]
+ 80%|███████████████████████████████▏       | 305M/382M [00:47&lt;00:17, 4.38MB/s]
+ 80%|███████████████████████████████▏       | 306M/382M [00:47&lt;00:18, 4.06MB/s]
+ 80%|███████████████████████████████▎       | 307M/382M [00:47&lt;00:15, 4.75MB/s]
+ 80%|███████████████████████████████▎       | 307M/382M [00:48&lt;00:15, 4.83MB/s]
+ 81%|███████████████████████████████▍       | 308M/382M [00:48&lt;00:17, 4.29MB/s]
+ 81%|███████████████████████████████▌       | 309M/382M [00:48&lt;00:14, 5.07MB/s]
+ 81%|███████████████████████████████▌       | 309M/382M [00:48&lt;00:16, 4.40MB/s]
+ 81%|███████████████████████████████▋       | 310M/382M [00:48&lt;00:14, 4.95MB/s]
+ 81%|███████████████████████████████▋       | 311M/382M [00:48&lt;00:16, 4.34MB/s]
+ 82%|███████████████████████████████▊       | 312M/382M [00:49&lt;00:16, 4.28MB/s]
+ 82%|███████████████████████████████▉       | 312M/382M [00:49&lt;00:15, 4.45MB/s]
+ 82%|███████████████████████████████▉       | 313M/382M [00:49&lt;00:15, 4.52MB/s]
+ 82%|████████████████████████████████       | 314M/382M [00:49&lt;00:14, 4.66MB/s]
+ 82%|████████████████████████████████▏      | 315M/382M [00:49&lt;00:14, 4.75MB/s]
+ 83%|████████████████████████████████▎      | 316M/382M [00:49&lt;00:12, 5.42MB/s]
+ 83%|████████████████████████████████▎      | 317M/382M [00:50&lt;00:14, 4.61MB/s]
+ 83%|████████████████████████████████▍      | 317M/382M [00:50&lt;00:14, 4.36MB/s]
+ 83%|████████████████████████████████▍      | 318M/382M [00:50&lt;00:14, 4.31MB/s]
+ 83%|████████████████████████████████▍      | 318M/382M [00:50&lt;00:13, 4.59MB/s]
+ 83%|████████████████████████████████▌      | 319M/382M [00:50&lt;00:15, 4.12MB/s]
+ 84%|████████████████████████████████▋      | 320M/382M [00:50&lt;00:14, 4.16MB/s]
+ 84%|████████████████████████████████▋      | 321M/382M [00:51&lt;00:13, 4.38MB/s]
+ 84%|████████████████████████████████▊      | 322M/382M [00:51&lt;00:13, 4.55MB/s]
+ 84%|████████████████████████████████▉      | 323M/382M [00:51&lt;00:12, 4.61MB/s]
+ 85%|█████████████████████████████████      | 324M/382M [00:51&lt;00:12, 4.59MB/s]
+ 85%|█████████████████████████████████      | 324M/382M [00:51&lt;00:12, 4.66MB/s]
+ 85%|█████████████████████████████████▏     | 325M/382M [00:52&lt;00:12, 4.71MB/s]
+ 85%|█████████████████████████████████▎     | 326M/382M [00:52&lt;00:12, 4.51MB/s]
+ 86%|█████████████████████████████████▍     | 327M/382M [00:52&lt;00:11, 4.68MB/s]
+ 86%|█████████████████████████████████▍     | 328M/382M [00:52&lt;00:11, 4.75MB/s]
+ 86%|█████████████████████████████████▌     | 329M/382M [00:52&lt;00:11, 4.72MB/s]
+ 86%|█████████████████████████████████▋     | 330M/382M [00:52&lt;00:09, 5.26MB/s]
+ 86%|█████████████████████████████████▋     | 330M/382M [00:53&lt;00:11, 4.60MB/s]
+ 87%|█████████████████████████████████▊     | 331M/382M [00:53&lt;00:09, 5.12MB/s]
+ 87%|█████████████████████████████████▊     | 332M/382M [00:53&lt;00:11, 4.36MB/s]
+ 87%|█████████████████████████████████▉     | 333M/382M [00:53&lt;00:11, 4.35MB/s]
+ 87%|██████████████████████████████████     | 334M/382M [00:53&lt;00:10, 4.56MB/s]
+ 88%|██████████████████████████████████▏    | 334M/382M [00:53&lt;00:10, 4.66MB/s]
+ 88%|██████████████████████████████████▏    | 335M/382M [00:54&lt;00:09, 4.79MB/s]
+ 88%|██████████████████████████████████▎    | 336M/382M [00:54&lt;00:09, 4.70MB/s]
+ 88%|██████████████████████████████████▎    | 337M/382M [00:54&lt;00:10, 4.49MB/s]
+ 88%|██████████████████████████████████▍    | 338M/382M [00:54&lt;00:09, 4.46MB/s]
+ 89%|██████████████████████████████████▌    | 338M/382M [00:54&lt;00:09, 4.61MB/s]
+ 89%|██████████████████████████████████▋    | 339M/382M [00:55&lt;00:09, 4.72MB/s]
+ 89%|██████████████████████████████████▋    | 340M/382M [00:55&lt;00:08, 5.14MB/s]
+ 89%|██████████████████████████████████▊    | 341M/382M [00:55&lt;00:08, 4.66MB/s]
+ 89%|██████████████████████████████████▉    | 342M/382M [00:55&lt;00:08, 4.66MB/s]
+ 90%|██████████████████████████████████▉    | 343M/382M [00:55&lt;00:08, 4.76MB/s]
+ 90%|███████████████████████████████████    | 343M/382M [00:55&lt;00:08, 4.73MB/s]
+ 90%|███████████████████████████████████    | 344M/382M [00:55&lt;00:08, 4.63MB/s]
+ 90%|███████████████████████████████████▏   | 344M/382M [00:56&lt;00:07, 4.85MB/s]
+ 90%|███████████████████████████████████▏   | 345M/382M [00:56&lt;00:08, 4.48MB/s]
+ 90%|███████████████████████████████████▎   | 346M/382M [00:56&lt;00:07, 4.89MB/s]
+ 91%|███████████████████████████████████▎   | 346M/382M [00:56&lt;00:07, 4.56MB/s]
+ 91%|███████████████████████████████████▍   | 347M/382M [00:56&lt;00:07, 4.97MB/s]
+ 91%|███████████████████████████████████▍   | 348M/382M [00:56&lt;00:07, 4.51MB/s]
+ 91%|███████████████████████████████████▌   | 348M/382M [00:56&lt;00:06, 5.06MB/s]
+ 91%|███████████████████████████████████▋   | 349M/382M [00:57&lt;00:07, 4.56MB/s]
+ 92%|███████████████████████████████████▋   | 350M/382M [00:57&lt;00:06, 5.02MB/s]
+ 92%|███████████████████████████████████▊   | 351M/382M [00:57&lt;00:06, 4.60MB/s]
+ 92%|███████████████████████████████████▊   | 351M/382M [00:57&lt;00:06, 4.88MB/s]
+ 92%|███████████████████████████████████▉   | 352M/382M [00:57&lt;00:07, 4.15MB/s]
+ 92%|███████████████████████████████████▉   | 352M/382M [00:57&lt;00:07, 4.01MB/s]
+ 92%|████████████████████████████████████   | 353M/382M [00:57&lt;00:06, 4.31MB/s]
+ 93%|████████████████████████████████████   | 354M/382M [00:58&lt;00:06, 4.27MB/s]
+ 93%|████████████████████████████████████▏  | 354M/382M [00:58&lt;00:06, 4.08MB/s]
+ 93%|████████████████████████████████████▏  | 355M/382M [00:58&lt;00:06, 4.28MB/s]
+ 93%|████████████████████████████████████▏  | 355M/382M [00:58&lt;00:06, 4.08MB/s]
+ 93%|████████████████████████████████████▎  | 355M/382M [00:58&lt;00:06, 4.16MB/s]
+ 93%|████████████████████████████████████▎  | 356M/382M [00:58&lt;00:06, 3.73MB/s]
+ 93%|████████████████████████████████████▍  | 357M/382M [00:58&lt;00:05, 4.44MB/s]
+ 94%|████████████████████████████████████▍  | 357M/382M [00:59&lt;00:06, 4.11MB/s]
+ 94%|████████████████████████████████████▌  | 358M/382M [00:59&lt;00:05, 4.56MB/s]
+ 94%|████████████████████████████████████▌  | 359M/382M [00:59&lt;00:05, 4.19MB/s]
+ 94%|████████████████████████████████████▋  | 359M/382M [00:59&lt;00:04, 4.88MB/s]
+ 94%|████████████████████████████████████▊  | 360M/382M [00:59&lt;00:05, 4.38MB/s]
+ 94%|████████████████████████████████████▊  | 361M/382M [00:59&lt;00:04, 5.02MB/s]
+ 95%|████████████████████████████████████▉  | 362M/382M [00:59&lt;00:04, 4.57MB/s]
+ 95%|████████████████████████████████████▉  | 362M/382M [01:00&lt;00:03, 5.14MB/s]
+ 95%|█████████████████████████████████████  | 363M/382M [01:00&lt;00:04, 4.64MB/s]
+ 95%|█████████████████████████████████████  | 364M/382M [01:00&lt;00:03, 5.06MB/s]
+ 95%|█████████████████████████████████████▏ | 364M/382M [01:00&lt;00:03, 5.28MB/s]
+ 95%|█████████████████████████████████████▏ | 365M/382M [01:00&lt;00:03, 4.40MB/s]
+ 96%|█████████████████████████████████████▎ | 366M/382M [01:00&lt;00:04, 4.13MB/s]
+ 96%|█████████████████████████████████████▎ | 366M/382M [01:01&lt;00:07, 2.15MB/s]
+ 96%|█████████████████████████████████████▍ | 366M/382M [01:01&lt;00:06, 2.47MB/s]
+ 96%|█████████████████████████████████████▍ | 367M/382M [01:01&lt;00:05, 2.95MB/s]
+ 96%|█████████████████████████████████████▍ | 367M/382M [01:01&lt;00:04, 3.19MB/s]
+ 96%|█████████████████████████████████████▌ | 368M/382M [01:01&lt;00:04, 3.13MB/s]
+ 96%|█████████████████████████████████████▋ | 369M/382M [01:01&lt;00:03, 3.85MB/s]
+ 97%|█████████████████████████████████████▋ | 369M/382M [01:02&lt;00:03, 3.89MB/s]
+ 97%|█████████████████████████████████████▊ | 370M/382M [01:02&lt;00:02, 4.50MB/s]
+ 97%|█████████████████████████████████████▊ | 371M/382M [01:02&lt;00:02, 4.32MB/s]
+ 97%|█████████████████████████████████████▉ | 371M/382M [01:02&lt;00:02, 4.67MB/s]
+ 97%|█████████████████████████████████████▉ | 372M/382M [01:02&lt;00:01, 5.06MB/s]
+ 98%|██████████████████████████████████████ | 373M/382M [01:02&lt;00:02, 4.36MB/s]
+ 98%|██████████████████████████████████████ | 373M/382M [01:02&lt;00:01, 4.75MB/s]
+ 98%|██████████████████████████████████████▏| 374M/382M [01:03&lt;00:01, 4.43MB/s]
+ 98%|██████████████████████████████████████▏| 375M/382M [01:03&lt;00:01, 4.96MB/s]
+ 98%|██████████████████████████████████████▎| 375M/382M [01:03&lt;00:01, 4.36MB/s]
+ 98%|██████████████████████████████████████▎| 376M/382M [01:03&lt;00:01, 4.44MB/s]
+ 98%|██████████████████████████████████████▍| 376M/382M [01:03&lt;00:01, 3.72MB/s]
+ 99%|██████████████████████████████████████▍| 377M/382M [01:03&lt;00:01, 3.97MB/s]
+ 99%|██████████████████████████████████████▌| 378M/382M [01:03&lt;00:01, 4.18MB/s]
+ 99%|██████████████████████████████████████▌| 378M/382M [01:04&lt;00:00, 4.22MB/s]
+ 99%|██████████████████████████████████████▋| 379M/382M [01:04&lt;00:00, 4.60MB/s]
+ 99%|██████████████████████████████████████▋| 379M/382M [01:04&lt;00:00, 4.33MB/s]
+ 99%|██████████████████████████████████████▊| 380M/382M [01:04&lt;00:00, 3.85MB/s]
+  0%|                                               | 0.00/382M [00:00&lt;?, ?B/s]
+100%|███████████████████████████████████████| 382M/382M [00:00&lt;00:00, 1.59TB/s]
+</pre></div>
+</div>
+<div class="output_subarea output_html rendered_html output_result">
+<table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <th> Title: </th>
+                        <td>  </td>
+                    </tr>
+                    <tr>
+                        <th> SignalType: </th>
+                        <td> electron_diffraction </td>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>  </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 1.50 GiB </td>
+                        <td> 28.12 MiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (290, 170|128, 128) </td>
+                        <td> (30,30|<b>128</b>,<b>128</b>) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 61 Tasks </td>
+                        <td> 60 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> >u2 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <th><p style="text-align:left;">Navigation Axes</p>  </th>
+                        <th> <p style="text-align:left;">Signal Axes</p> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td> <svg width="170" height="120" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="12" x2="120" y2="12" />
+  <line x1="0" y1="24" x2="120" y2="24" />
+  <line x1="0" y1="37" x2="120" y2="37" />
+  <line x1="0" y1="49" x2="120" y2="49" />
+  <line x1="0" y1="62" x2="120" y2="62" />
+  <line x1="0" y1="70" x2="120" y2="70" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="70" style="stroke-width:2" />
+  <line x1="12" y1="0" x2="12" y2="70" />
+  <line x1="24" y1="0" x2="24" y2="70" />
+  <line x1="37" y1="0" x2="37" y2="70" />
+  <line x1="49" y1="0" x2="49" y2="70" />
+  <line x1="62" y1="0" x2="62" y2="70" />
+  <line x1="74" y1="0" x2="74" y2="70" />
+  <line x1="86" y1="0" x2="86" y2="70" />
+  <line x1="99" y1="0" x2="99" y2="70" />
+  <line x1="111" y1="0" x2="111" y2="70" />
+  <line x1="120" y1="0" x2="120" y2="70" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,70.3448275862069 0.0,70.3448275862069" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.0" y="90.3448275862069" font-size="1.0rem" font-weight="100" text-anchor="middle" >290</text>
+  <text x="140.0" y="35.17241379310345" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,140.0,35.17241379310345)">170</text>
+</svg> </td>
+                        <td> <svg width="170" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="120" x2="120" y2="120" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
+  <line x1="120" y1="0" x2="120" y2="120" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,120.0 0.0,120.0" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.0" y="140.0" font-size="1.0rem" font-weight="100" text-anchor="middle" >128</text>
+  <text x="140.0" y="60.0" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,140.0,60.0)">128</text>
+</svg> </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+</table>
+</div>
+<br />
+<br /><p>plot the data to visualise it</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><a href="../../reference/generated/pyxem.signals.Diffraction2D.plot.html#pyxem.signals.Diffraction2D.plot" title="pyxem.signals.Diffraction2D.plot" class="sphx-glr-backref-module-pyxem-signals sphx-glr-backref-type-py-method"><span class="n">s</span><span class="o">.</span><span class="n">plot</span></a><span class="p">()</span>
+</pre></div>
+</div>
+<ul class="sphx-glr-horizontal">
+<li><img src="../../_images/sphx_glr_analysis_of_magnetic_sample_001.png" srcset="../../_images/sphx_glr_analysis_of_magnetic_sample_001.png" alt="FeAl_stripes Navigator" class = "sphx-glr-multi-img"/></li>
+<li><img src="../../_images/sphx_glr_analysis_of_magnetic_sample_002.png" srcset="../../_images/sphx_glr_analysis_of_magnetic_sample_002.png" alt="FeAl_stripes Signal" class = "sphx-glr-multi-img"/></li>
+</ul>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># This dataset is chunked into blocks of (16 x 16 x 16 x 16) hyperpixels (x, y, kx, ky)</span>
+<span class="c1"># This means that we can create virtual images quite easily and quickly.</span>
+<span class="c1"># For example:</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><a href="../../reference/generated/pyxem.signals.LazyElectronDiffraction2D.html#pyxem.signals.LazyElectronDiffraction2D" title="pyxem.signals.LazyElectronDiffraction2D" class="sphx-glr-backref-module-pyxem-signals sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">s_nav</span></a> <span class="o">=</span> <a href="../../reference/generated/pyxem.signals.LazyElectronDiffraction2D.html#pyxem.signals.LazyElectronDiffraction2D" title="pyxem.signals.LazyElectronDiffraction2D" class="sphx-glr-backref-module-pyxem-signals sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">s</span></a><span class="o">.</span><span class="n">isig</span><span class="p">[</span><span class="mi">32</span><span class="p">,</span> <span class="mi">35</span><span class="p">]</span><span class="o">.</span><span class="n">T</span>
+<a href="../../reference/generated/pyxem.signals.Diffraction2D.plot.html#pyxem.signals.Diffraction2D.plot" title="pyxem.signals.Diffraction2D.plot" class="sphx-glr-backref-module-pyxem-signals sphx-glr-backref-type-py-method"><span class="n">s_nav</span><span class="o">.</span><span class="n">plot</span></a><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_analysis_of_magnetic_sample_003.png" srcset="../../_images/sphx_glr_analysis_of_magnetic_sample_003.png" alt="Signal" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/2 [00:00&lt;?, ?it/s]
+100%|██████████| 2/2 [00:00&lt;00:00, 57.69it/s]
+</pre></div>
+</div>
+<p>We can use this as our navigation image:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><a href="../../reference/generated/pyxem.signals.Diffraction2D.plot.html#pyxem.signals.Diffraction2D.plot" title="pyxem.signals.Diffraction2D.plot" class="sphx-glr-backref-module-pyxem-signals sphx-glr-backref-type-py-method"><span class="n">s</span><span class="o">.</span><span class="n">plot</span></a><span class="p">(</span><span class="n">navigator</span><span class="o">=</span><a href="../../reference/generated/pyxem.signals.LazyElectronDiffraction2D.html#pyxem.signals.LazyElectronDiffraction2D" title="pyxem.signals.LazyElectronDiffraction2D" class="sphx-glr-backref-module-pyxem-signals sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">s_nav</span></a><span class="p">)</span>
+
+<span class="c1"># Many Times the shifts are quite small so one thing we can do is transpose</span>
+<span class="c1"># the data and then interactively shift around to visualize the shift.</span>
+
+<span class="c1"># Try using Shift + Left Mouse Button to jump to the Edge of the Zero beam</span>
+<span class="c1"># in the Transposed Image:</span>
+
+<a href="../../reference/generated/pyxem.signals.LazyElectronDiffraction2D.html#pyxem.signals.LazyElectronDiffraction2D" title="pyxem.signals.LazyElectronDiffraction2D" class="sphx-glr-backref-module-pyxem-signals sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">s_diff_nav</span></a> <span class="o">=</span> <a href="../../reference/generated/pyxem.signals.LazyElectronDiffraction2D.html#pyxem.signals.LazyElectronDiffraction2D" title="pyxem.signals.LazyElectronDiffraction2D" class="sphx-glr-backref-module-pyxem-signals sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">s</span></a><span class="o">.</span><span class="n">inav</span><span class="p">[</span><span class="mi">10</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">:</span><span class="mi">20</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<a href="../../reference/generated/pyxem.signals.Diffraction2D.plot.html#pyxem.signals.Diffraction2D.plot" title="pyxem.signals.Diffraction2D.plot" class="sphx-glr-backref-module-pyxem-signals sphx-glr-backref-type-py-method"><span class="n">s_diff_nav</span><span class="o">.</span><span class="n">plot</span></a><span class="p">()</span>
+</pre></div>
+</div>
+<ul class="sphx-glr-horizontal">
+<li><img src="../../_images/sphx_glr_analysis_of_magnetic_sample_004.png" srcset="../../_images/sphx_glr_analysis_of_magnetic_sample_004.png" alt="FeAl_stripes Navigator" class = "sphx-glr-multi-img"/></li>
+<li><img src="../../_images/sphx_glr_analysis_of_magnetic_sample_005.png" srcset="../../_images/sphx_glr_analysis_of_magnetic_sample_005.png" alt="FeAl_stripes Signal" class = "sphx-glr-multi-img"/></li>
+<li><img src="../../_images/sphx_glr_analysis_of_magnetic_sample_006.png" srcset="../../_images/sphx_glr_analysis_of_magnetic_sample_006.png" alt="Signal" class = "sphx-glr-multi-img"/></li>
+</ul>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/2 [00:00&lt;?, ?it/s]
+100%|██████████| 2/2 [00:00&lt;00:00, 57.40it/s]
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><a href="../../reference/generated/pyxem.signals.LazyElectronDiffraction2D.html#pyxem.signals.LazyElectronDiffraction2D" title="pyxem.signals.LazyElectronDiffraction2D" class="sphx-glr-backref-module-pyxem-signals sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">s_transpose</span></a> <span class="o">=</span> <a href="../../reference/generated/pyxem.signals.LazyElectronDiffraction2D.html#pyxem.signals.LazyElectronDiffraction2D" title="pyxem.signals.LazyElectronDiffraction2D" class="sphx-glr-backref-module-pyxem-signals sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">s</span></a><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+
+<a href="../../reference/generated/pyxem.signals.Diffraction2D.plot.html#pyxem.signals.Diffraction2D.plot" title="pyxem.signals.Diffraction2D.plot" class="sphx-glr-backref-module-pyxem-signals sphx-glr-backref-type-py-method"><span class="n">s_transpose</span><span class="o">.</span><span class="n">plot</span></a><span class="p">(</span><span class="n">navigator</span><span class="o">=</span><a href="../../reference/generated/pyxem.signals.LazyElectronDiffraction2D.html#pyxem.signals.LazyElectronDiffraction2D" title="pyxem.signals.LazyElectronDiffraction2D" class="sphx-glr-backref-module-pyxem-signals sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">s_diff_nav</span></a><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="sphx-glr-horizontal">
+<li><img src="../../_images/sphx_glr_analysis_of_magnetic_sample_007.png" srcset="../../_images/sphx_glr_analysis_of_magnetic_sample_007.png" alt="analysis of magnetic sample" class = "sphx-glr-multi-img"/></li>
+<li><img src="../../_images/sphx_glr_analysis_of_magnetic_sample_008.png" srcset="../../_images/sphx_glr_analysis_of_magnetic_sample_008.png" alt="Signal" class = "sphx-glr-multi-img"/></li>
+</ul>
+<p>This visualizes the shift of the beam, which is caused by the beam passing through the ferromagnetic domains in the material.
+However, it is not very quantitative. So lets try to extract the beam shifts using center of mass.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extracting the Beam Shifts using Center of Mass</span>
+<span class="c1"># -----------------------------------------------</span>
+
+<a href="../../reference/generated/pyxem.signals.BeamShift.html#pyxem.signals.BeamShift" title="pyxem.signals.BeamShift" class="sphx-glr-backref-module-pyxem-signals sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">com</span></a> <span class="o">=</span> <a href="../../reference/generated/pyxem.signals.Diffraction2D.get_direct_beam_position.html#pyxem.signals.Diffraction2D.get_direct_beam_position" title="pyxem.signals.Diffraction2D.get_direct_beam_position" class="sphx-glr-backref-module-pyxem-signals sphx-glr-backref-type-py-method"><span class="n">s</span><span class="o">.</span><span class="n">get_direct_beam_position</span></a><span class="p">(</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;center_of_mass&quot;</span><span class="p">,</span> <span class="n">half_square_width</span><span class="o">=</span><span class="mi">40</span>  <span class="c1"># in pixels</span>
+<span class="p">)</span>
+
+<a href="../../reference/generated/pyxem.signals.BeamShift.html#pyxem.signals.BeamShift" title="pyxem.signals.BeamShift" class="sphx-glr-backref-module-pyxem-signals sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">com</span></a>
+</pre></div>
+</div>
+<div class="output_subarea output_html rendered_html output_result">
+<table align="center"><tr><td colspan= "3"> <center> LazyBeamShift, title: , dimensions: (290, 170|2) </center></td></tr><tr><td colspan= "3"> <center> Current Index:(0, 0) </center> </td></tr><tr><td colspan= "3">  </td></tr><tr><th>column_names:</th><th><center>x-shift</center></th><th><center>y-shift</center></th></tr><th>units:</th><th><center>px</center></th><th><center>px</center></th></tr><tr><td><center>0</center></td><td><center>5.1875</center></td><td><center>-6.5</center></td></tr></table>
+</div>
+<br />
+<br /><p>This returns a <cite>BeamShift1D</cite> class, which will be explored more later. What we need to know is that
+is it basically a HyperSpy <cite>Signal1D</cite> class, where at each navigation pixel we have a 2D vector
+(kx, ky) of the beam shift.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plotting it shows the seperated x, and y components of the beam shift.</span>
+<span class="c1"># You first need to compute it before you can plot it.</span>
+
+<a href="../../reference/generated/pyxem.signals.BeamShift.html#pyxem.signals.BeamShift" title="pyxem.signals.BeamShift" class="sphx-glr-backref-module-pyxem-signals sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">com</span><span class="o">.</span><span class="n">compute</span></a><span class="p">()</span>
+<a href="../../reference/generated/pyxem.signals.DiffractionVectors1D.plot.html#pyxem.signals.DiffractionVectors1D.plot" title="pyxem.signals.DiffractionVectors1D.plot" class="sphx-glr-backref-module-pyxem-signals sphx-glr-backref-type-py-method"><span class="n">com</span><span class="o">.</span><span class="n">plot</span></a><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_analysis_of_magnetic_sample_009.png" srcset="../../_images/sphx_glr_analysis_of_magnetic_sample_009.png" alt="x-shift, y-shift" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/181 [00:00&lt;?, ?it/s]
+  1%|          | 1/181 [00:00&lt;00:25,  7.01it/s]
+  2%|▏         | 4/181 [00:00&lt;00:12, 14.63it/s]
+  9%|▉         | 16/181 [00:00&lt;00:05, 30.78it/s]
+ 15%|█▌        | 28/181 [00:00&lt;00:04, 37.38it/s]
+ 19%|█▉        | 34/181 [00:01&lt;00:04, 36.12it/s]
+ 22%|██▏       | 40/181 [00:01&lt;00:04, 31.33it/s]
+ 24%|██▍       | 44/181 [00:01&lt;00:04, 31.95it/s]
+ 27%|██▋       | 48/181 [00:01&lt;00:04, 31.67it/s]
+ 29%|██▊       | 52/181 [00:01&lt;00:04, 30.10it/s]
+ 30%|███       | 55/181 [00:01&lt;00:04, 29.79it/s]
+ 34%|███▎      | 61/181 [00:02&lt;00:04, 28.86it/s]
+ 37%|███▋      | 67/181 [00:02&lt;00:04, 27.39it/s]
+ 39%|███▊      | 70/181 [00:02&lt;00:04, 27.12it/s]
+ 42%|████▏     | 76/181 [00:02&lt;00:03, 27.53it/s]
+ 44%|████▍     | 80/181 [00:02&lt;00:03, 29.92it/s]
+ 46%|████▋     | 84/181 [00:02&lt;00:03, 26.99it/s]
+ 50%|█████     | 91/181 [00:02&lt;00:02, 35.79it/s]
+ 53%|█████▎    | 96/181 [00:03&lt;00:03, 25.62it/s]
+ 59%|█████▊    | 106/181 [00:03&lt;00:03, 24.66it/s]
+ 65%|██████▌   | 118/181 [00:04&lt;00:02, 28.83it/s]
+ 69%|██████▊   | 124/181 [00:04&lt;00:01, 29.43it/s]
+ 72%|███████▏  | 130/181 [00:04&lt;00:01, 26.65it/s]
+ 75%|███████▌  | 136/181 [00:04&lt;00:01, 29.39it/s]
+ 78%|███████▊  | 142/181 [00:04&lt;00:01, 25.53it/s]
+ 85%|████████▌ | 154/181 [00:05&lt;00:00, 27.60it/s]
+ 87%|████████▋ | 157/181 [00:05&lt;00:00, 26.70it/s]
+ 93%|█████████▎| 169/181 [00:05&lt;00:00, 26.53it/s]
+100%|██████████| 181/181 [00:05&lt;00:00, 30.19it/s]
+
+[&lt;Axes: title={&#39;center&#39;: &#39;x-shift&#39;}, xlabel=&#39;x axis (nm)&#39;, ylabel=&#39;y axis (nm)&#39;&gt;, &lt;Axes: title={&#39;center&#39;: &#39;y-shift&#39;}, xlabel=&#39;x axis (nm)&#39;, ylabel=&#39;y axis (nm)&#39;&gt;]
+</pre></div>
+</div>
+<section id="other-contrast">
+<h2>Other Contrast:<a class="headerlink" href="#other-contrast" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>However, we’re also getting contrast from the other effects, such as structural effects.</dt><dd><p>Since the sample is nanocrystalline, some of the grains will be close to some zone axis,
+giving heavy Bragg scattering. While the Bragg spots themselves won’t be visible at such low</p>
+</dd>
+</dl>
+<p>scattering angles as we have in <cite>s_crop</cite>, it will still change the intensity distribution _within_
+the direct beam. Essentially, the direct beam becomes non-uniform, which will have an effect similarly</p>
+<blockquote>
+<div><p>to beam shift.</p>
+</div></blockquote>
+<dl class="simple">
+<dt>One way of reducing this is by using thresholding and masking. However, we first need to find reasonable</dt><dd><p>values for these.</p>
+</dd>
+</dl>
+<p>For this, we use <cite>threshold_and_mask</cite> on a subset of the dataset.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># threshold_and_mask is not supported for lazy signals; use a non-lazy copy</span>
+<span class="c1"># so that the original lazy s remains unchanged for subsequent operations.</span>
+<a href="../../reference/generated/pyxem.signals.ElectronDiffraction2D.html#pyxem.signals.ElectronDiffraction2D" title="pyxem.signals.ElectronDiffraction2D" class="sphx-glr-backref-module-pyxem-signals sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">s_eager</span></a> <span class="o">=</span> <a href="../../reference/generated/pyxem.signals.LazyElectronDiffraction2D.html#pyxem.signals.LazyElectronDiffraction2D" title="pyxem.signals.LazyElectronDiffraction2D" class="sphx-glr-backref-module-pyxem-signals sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">s</span></a><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<a href="../../reference/generated/pyxem.signals.ElectronDiffraction2D.html#pyxem.signals.ElectronDiffraction2D" title="pyxem.signals.ElectronDiffraction2D" class="sphx-glr-backref-module-pyxem-signals sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">s_eager</span><span class="o">.</span><span class="n">compute</span></a><span class="p">()</span>
+<a href="../../reference/generated/pyxem.signals.ElectronDiffraction2D.html#pyxem.signals.ElectronDiffraction2D" title="pyxem.signals.ElectronDiffraction2D" class="sphx-glr-backref-module-pyxem-signals sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">s_threshold_mask</span></a> <span class="o">=</span> <a href="../../reference/generated/pyxem.signals.Diffraction2D.threshold_and_mask.html#pyxem.signals.Diffraction2D.threshold_and_mask" title="pyxem.signals.Diffraction2D.threshold_and_mask" class="sphx-glr-backref-module-pyxem-signals sphx-glr-backref-type-py-method"><span class="n">s_eager</span><span class="o">.</span><span class="n">threshold_and_mask</span></a><span class="p">(</span>
+    <span class="n">threshold</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">mask</span><span class="o">=</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">46</span><span class="p">),</span>  <span class="c1"># x  # y  # radius</span>
+<span class="p">)</span>
+
+<a href="../../reference/generated/pyxem.signals.Diffraction2D.plot.html#pyxem.signals.Diffraction2D.plot" title="pyxem.signals.Diffraction2D.plot" class="sphx-glr-backref-module-pyxem-signals sphx-glr-backref-type-py-method"><span class="n">s_threshold_mask</span><span class="o">.</span><span class="n">plot</span></a><span class="p">(</span><span class="n">navigator</span><span class="o">=</span><a href="../../reference/generated/pyxem.signals.LazyElectronDiffraction2D.html#pyxem.signals.LazyElectronDiffraction2D" title="pyxem.signals.LazyElectronDiffraction2D" class="sphx-glr-backref-module-pyxem-signals sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">s_nav</span></a><span class="p">)</span>
+
+
+<span class="c1"># `threshold_and_mask` is a useful way to preprocess the data before extracting the beam shifts.</span>
+<span class="c1"># It works by getting the mean of the intensity inside the masked area, times the threshold.</span>
+<span class="c1">#  Then, any pixel lower or equal than that value is set to zero, while any value above that</span>
+<span class="c1">#  value is set to one. Ideally, this should remove the influence of other diffraction effects,</span>
+<span class="c1"># and non-uniform direct beam.</span>
+</pre></div>
+</div>
+<ul class="sphx-glr-horizontal">
+<li><img src="../../_images/sphx_glr_analysis_of_magnetic_sample_010.png" srcset="../../_images/sphx_glr_analysis_of_magnetic_sample_010.png" alt="analysis of magnetic sample" class = "sphx-glr-multi-img"/></li>
+<li><img src="../../_images/sphx_glr_analysis_of_magnetic_sample_011.png" srcset="../../_images/sphx_glr_analysis_of_magnetic_sample_011.png" alt="Signal" class = "sphx-glr-multi-img"/></li>
+</ul>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/61 [00:00&lt;?, ?it/s]
+ 15%|█▍        | 9/61 [00:00&lt;00:00, 89.32it/s]
+ 30%|██▉       | 18/61 [00:00&lt;00:00, 80.88it/s]
+ 44%|████▍     | 27/61 [00:00&lt;00:00, 81.77it/s]
+ 59%|█████▉    | 36/61 [00:00&lt;00:00, 81.99it/s]
+ 74%|███████▍  | 45/61 [00:00&lt;00:00, 83.28it/s]
+ 89%|████████▊ | 54/61 [00:00&lt;00:00, 78.53it/s]
+100%|██████████| 61/61 [00:00&lt;00:00, 67.29it/s]
+
+  0%|          | 0/51 [00:00&lt;?, ?it/s]
+  2%|▏         | 1/51 [00:01&lt;01:17,  1.54s/it]
+ 18%|█▊        | 9/51 [00:03&lt;00:12,  3.34it/s]
+ 33%|███▎      | 17/51 [00:04&lt;00:08,  4.19it/s]
+ 49%|████▉     | 25/51 [00:06&lt;00:05,  4.60it/s]
+ 61%|██████    | 31/51 [00:06&lt;00:03,  6.45it/s]
+ 65%|██████▍   | 33/51 [00:07&lt;00:04,  4.40it/s]
+ 76%|███████▋  | 39/51 [00:07&lt;00:01,  6.44it/s]
+ 80%|████████  | 41/51 [00:09&lt;00:02,  4.33it/s]
+ 92%|█████████▏| 47/51 [00:09&lt;00:00,  6.69it/s]
+ 98%|█████████▊| 50/51 [00:09&lt;00:00,  7.89it/s]
+100%|██████████| 51/51 [00:09&lt;00:00,  5.30it/s]
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><a href="../../reference/generated/pyxem.signals.BeamShift.html#pyxem.signals.BeamShift" title="pyxem.signals.BeamShift" class="sphx-glr-backref-module-pyxem-signals sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">com_threshold</span></a> <span class="o">=</span> <a href="../../reference/generated/pyxem.signals.Diffraction2D.get_direct_beam_position.html#pyxem.signals.Diffraction2D.get_direct_beam_position" title="pyxem.signals.Diffraction2D.get_direct_beam_position" class="sphx-glr-backref-module-pyxem-signals sphx-glr-backref-type-py-method"><span class="n">s_threshold_mask</span><span class="o">.</span><span class="n">get_direct_beam_position</span></a><span class="p">(</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;center_of_mass&quot;</span><span class="p">,</span> <span class="n">half_square_width</span><span class="o">=</span><span class="mi">40</span>  <span class="c1"># in pixels</span>
+<span class="p">)</span>
+
+<span class="c1"># s_threshold_mask is already non-lazy, so com_threshold is too — no .compute() needed</span>
+<a href="../../reference/generated/pyxem.signals.DiffractionVectors1D.plot.html#pyxem.signals.DiffractionVectors1D.plot" title="pyxem.signals.DiffractionVectors1D.plot" class="sphx-glr-backref-module-pyxem-signals sphx-glr-backref-type-py-method"><span class="n">com_threshold</span><span class="o">.</span><span class="n">plot</span></a><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_analysis_of_magnetic_sample_012.png" srcset="../../_images/sphx_glr_analysis_of_magnetic_sample_012.png" alt="x-shift, y-shift" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;Axes: title={&#39;center&#39;: &#39;x-shift&#39;}, xlabel=&#39;x axis (nm)&#39;, ylabel=&#39;y axis (nm)&#39;&gt;, &lt;Axes: title={&#39;center&#39;: &#39;y-shift&#39;}, xlabel=&#39;x axis (nm)&#39;, ylabel=&#39;y axis (nm)&#39;&gt;]
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Correcting the d-scan</span>
+<span class="c1"># ---------------------</span>
+<span class="c1"># With the beam shift extracted, we will remove the effects of impure beam shift (d-scan).</span>
+<span class="c1"># This is due to various instrument misalignments, and leads to a change in beam position in</span>
+<span class="c1"># the probe plane becoming a shift of the beam in the detector plane.</span>
+<span class="c1"># Luckily, in most situations, the d-scan is linear across the dataset, meaning it can be removed</span>
+<span class="c1"># using a simple plane subtraction.</span>
+
+
+<a href="../../reference/generated/pyxem.signals.BeamShift.html#pyxem.signals.BeamShift" title="pyxem.signals.BeamShift" class="sphx-glr-backref-module-pyxem-signals sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">plane</span></a> <span class="o">=</span> <a href="../../reference/generated/pyxem.signals.BeamShift.get_linear_plane.html#pyxem.signals.BeamShift.get_linear_plane" title="pyxem.signals.BeamShift.get_linear_plane" class="sphx-glr-backref-module-pyxem-signals sphx-glr-backref-type-py-method"><span class="n">com_threshold</span><span class="o">.</span><span class="n">get_linear_plane</span></a><span class="p">()</span>
+<a href="../../reference/generated/pyxem.signals.DiffractionVectors1D.plot.html#pyxem.signals.DiffractionVectors1D.plot" title="pyxem.signals.DiffractionVectors1D.plot" class="sphx-glr-backref-module-pyxem-signals sphx-glr-backref-type-py-method"><span class="n">plane</span><span class="o">.</span><span class="n">plot</span></a><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_analysis_of_magnetic_sample_013.png" srcset="../../_images/sphx_glr_analysis_of_magnetic_sample_013.png" alt="x-shift, y-shift" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;Axes: title={&#39;center&#39;: &#39;x-shift&#39;}, xlabel=&#39;x axis (nm)&#39;, ylabel=&#39;y axis (nm)&#39;&gt;, &lt;Axes: title={&#39;center&#39;: &#39;y-shift&#39;}, xlabel=&#39;x axis (nm)&#39;, ylabel=&#39;y axis (nm)&#39;&gt;]
+</pre></div>
+</div>
+</section>
+<section id="visualising-the-beam-shifts">
+<h2>Visualising the Beam Shifts<a class="headerlink" href="#visualising-the-beam-shifts" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>Now we can visualize the signal as a magnitude and direction maps: <cite>get_color_signal</cite>,`get_magnitude_phase_signal`,</dt><dd><p><cite>get_magnitude_signal</cite></p>
+</dd>
+</dl>
+<p>and <cite>get_color_image_with_indicator</cite>.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># The two former returns a HyperSpy signal, while the latter interfaces directly with the matplotlib</span>
+<span class="c1"># backend making it more customizable.</span>
+<a href="../../reference/generated/pyxem.signals.BeamShift.html#pyxem.signals.BeamShift" title="pyxem.signals.BeamShift" class="sphx-glr-backref-module-pyxem-signals sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">com_threshold_corrected</span></a> <span class="o">=</span> <a href="../../reference/generated/pyxem.signals.BeamShift.html#pyxem.signals.BeamShift" title="pyxem.signals.BeamShift" class="sphx-glr-backref-module-pyxem-signals sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">com_threshold</span></a> <span class="o">-</span> <a href="../../reference/generated/pyxem.signals.BeamShift.html#pyxem.signals.BeamShift" title="pyxem.signals.BeamShift" class="sphx-glr-backref-module-pyxem-signals sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">plane</span></a>
+<a href="../../reference/generated/pyxem.signals.BeamShift.html#pyxem.signals.BeamShift" title="pyxem.signals.BeamShift" class="sphx-glr-backref-module-pyxem-signals sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">com_corrected</span></a> <span class="o">=</span> <a href="../../reference/generated/pyxem.signals.BeamShift.html#pyxem.signals.BeamShift" title="pyxem.signals.BeamShift" class="sphx-glr-backref-module-pyxem-signals sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">com</span></a> <span class="o">-</span> <a href="../../reference/generated/pyxem.signals.BeamShift.html#pyxem.signals.BeamShift" title="pyxem.signals.BeamShift" class="sphx-glr-backref-module-pyxem-signals sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">plane</span></a>
+<a href="../../reference/generated/pyxem.signals.BeamShift.get_color_signal.html#pyxem.signals.BeamShift.get_color_signal" title="pyxem.signals.BeamShift.get_color_signal" class="sphx-glr-backref-module-pyxem-signals sphx-glr-backref-type-py-method"><span class="n">com_threshold_corrected</span><span class="o">.</span><span class="n">get_color_signal</span></a><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_analysis_of_magnetic_sample_014.png" srcset="../../_images/sphx_glr_analysis_of_magnetic_sample_014.png" alt="Signal" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/pyxem/signals/beam_shift.py:645: VisibleDeprecationWarning: Function `get_color_signal()` is deprecated and will be removed in version 1.0.0. Use `get_magnitude_phase_signal()` instead.
+  since=&quot;0.19.0&quot;,
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><a href="../../reference/generated/pyxem.signals.BeamShift.get_magnitude_phase_signal.html#pyxem.signals.BeamShift.get_magnitude_phase_signal" title="pyxem.signals.BeamShift.get_magnitude_phase_signal" class="sphx-glr-backref-module-pyxem-signals sphx-glr-backref-type-py-method"><span class="n">com_threshold_corrected</span><span class="o">.</span><span class="n">get_magnitude_phase_signal</span></a><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_analysis_of_magnetic_sample_015.png" srcset="../../_images/sphx_glr_analysis_of_magnetic_sample_015.png" alt="Signal" class = "sphx-glr-single-img"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><a href="../../reference/generated/pyxem.signals.BeamShift.get_magnitude_phase_signal.html#pyxem.signals.BeamShift.get_magnitude_phase_signal" title="pyxem.signals.BeamShift.get_magnitude_phase_signal" class="sphx-glr-backref-module-pyxem-signals sphx-glr-backref-type-py-method"><span class="n">com_corrected</span><span class="o">.</span><span class="n">get_magnitude_phase_signal</span></a><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_analysis_of_magnetic_sample_016.png" srcset="../../_images/sphx_glr_analysis_of_magnetic_sample_016.png" alt="Signal" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 52.125 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorials-phase-contrast-analysis-of-magnetic-sample-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/a72891cd92b15cdb192685b9396ec055/analysis_of_magnetic_sample.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">analysis_of_magnetic_sample.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/37129998353961af89a5c95bf600e6b6/analysis_of_magnetic_sample.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">analysis_of_magnetic_sample.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/bb8373ac817925f6587590756a398b3d/analysis_of_magnetic_sample.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">analysis_of_magnetic_sample.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Phase Contrast</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../processing/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Processing Workflows</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-contrast">Other Contrast:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualising-the-beam-shifts">Visualising the Beam Shifts</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/pyxem/pyxem/edit/main/doc/tutorials/phase_contrast/analysis_of_magnetic_sample.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/tutorials/phase_contrast/analysis_of_magnetic_sample.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Copyright 2016-2025, The pyxem developers.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

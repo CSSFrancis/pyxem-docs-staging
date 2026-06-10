@@ -1,0 +1,50 @@
+
+
+.. _sphx_glr_tutorials_processing:
+
+Processing Workflows
+====================
+
+Below are full worked tutorials for common 4D-STEM processing workflows in pyxem.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This tutorial walks through a complete 4D-STEM data inspection and preprocessing workflow using a real GaAs twinned nanowire dataset. It covers:">
+
+.. only:: html
+
+  .. image:: /tutorials/processing/images/thumb/sphx_glr_4dstem_data_inspection_thumb.png
+    :alt:
+
+  :doc:`/tutorials/processing/4dstem_data_inspection`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">4D-STEM Data Inspection and Preprocessing</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /tutorials/processing/4dstem_data_inspection
+

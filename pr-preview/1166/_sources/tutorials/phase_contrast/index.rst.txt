@@ -1,0 +1,50 @@
+
+
+.. _sphx_glr_tutorials_phase_contrast:
+
+Phase Contrast
+==============
+
+Below is a gallery of full worked tutorials for phase contrast imaging in pyxem.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This tutorial shows how to use pyxem to analyse 4D-STEM data from magnetic materials using differential phase contrast (DPC). For more information about this imaging method, see the Wikipedia article on Scanning Transmission Electron Microscopy, which has a subsection on DPC.">
+
+.. only:: html
+
+  .. image:: /tutorials/phase_contrast/images/thumb/sphx_glr_analysis_of_magnetic_sample_thumb.png
+    :alt:
+
+  :doc:`/tutorials/phase_contrast/analysis_of_magnetic_sample`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Analysing Magnetic Materials using STEM-DPC</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /tutorials/phase_contrast/analysis_of_magnetic_sample
+
